@@ -100,7 +100,7 @@
 
         @keyframes cakeSliceAppear { from { opacity: 0; transform: scale(0.6) rotateY(-90deg); } to { opacity: 1; transform: scale(1) rotateY(0deg); } }
 
-        /* PHOTO OVERLAY LOGIC (CSS ONLY) */
+        /* PHOTO OVERLAY */
         .photo-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center;
@@ -113,20 +113,44 @@
         @keyframes cakeSliceExplode { to { transform: scale(0) rotate(720deg); opacity: 0; } }
 
         .photo-card {
-            background: white; padding: 15px 15px 30px; border-radius: 10px;
-            text-align: center; width: 85%; max-width: 350px;
+            background: white; padding: 15px 15px 25px; border-radius: 10px;
+            text-align: center; width: 90%; max-width: 380px;
             transform: scale(0.7); transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         #trigger-gallery:checked ~ .photo-overlay .photo-card { transform: scale(1); }
-        .photo-card img { width: 100%; border-radius: 5px; }
-        .photo-caption { font-family: 'Dancing Script', cursive; color: #333; font-size: 1.5rem; margin: 15px 0; }
-        
-        .close-photo { 
-            padding: 8px 20px; background: #ff6b9d; color: white; 
-            border-radius: 20px; cursor: pointer; display: inline-block; 
+
+        /* GALLERY SLIDER */
+        .photo-gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 0;
+            border-radius: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .photo-gallery::-webkit-scrollbar { display: none; }
+        .photo-gallery img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            scroll-snap-align: start;
         }
 
-        /* MUSIC BTN */
+        .photo-caption { 
+            font-family: 'Dancing Script', cursive; 
+            color: #333; 
+            font-size: 1.2rem; 
+            margin: 15px 0;
+            min-height: 60px; /* Biar tinggi teks stabil */
+        }
+        
+        .close-photo { 
+            padding: 8px 25px; background: #ff6b9d; color: white; 
+            border-radius: 20px; cursor: pointer; display: inline-block;
+            margin-top: 10px;
+        }
+
         .music-btn {
             position: fixed; top: 20px; right: 20px; background: rgba(255,255,255,0.2);
             border-radius: 50%; width: 55px; height: 55px; color: white;
@@ -166,10 +190,14 @@
 
     <div class="photo-overlay">
         <div class="photo-card">
-            <img src="IMG_3423 2.JPG">
-            <div class="photo-caption">Dari foto ini aku lihat semangat dan tekad yang luar biasa dari kamu untuk menggapai cita-cita yang tinggi, semoga semua yang kamu usahakan terkabul, amiin  </div>
-            <img src="IMG_1551 2.JPG">
-            <div class="Photo caption">Semoga bisa berpetualang bersama selalu</div>
+            <div class="photo-gallery">
+                <img src="IMG_3423 2.JPG" alt="Foto 1">
+                <img src="IMG_1551 2.jpg" alt="Foto 2">
+            </div>
+            <div class="photo-caption" id="captionText">
+                "Semangatmu luar biasa untuk menggapai cita-cita. Semoga semua usahamu terkabul. Dan semoga kita bisa terus berpetualang bersama!"
+            </div>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 10px;">(Geser foto ke samping ✨)</p>
             <label for="trigger-gallery" class="close-photo">Tutup</label>
         </div>
     </div>
@@ -189,7 +217,7 @@
                 bgMusic.pause();
                 musicBtn.innerHTML = '🔇';
             } else {
-                bgMusic.play();
+                bgMusic.play().catch(e => console.log("Audio play blocked"));
                 musicBtn.innerHTML = '🎵';
             }
             isPlaying = !isPlaying;
