@@ -114,15 +114,15 @@ h1.title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* CAKE BUTTON */
+/* CAKE BUTTON - TANPA BULATAN/BORDER RADIUS */
 .cake-btn {
-    font-size: clamp(4rem, 12vw, 6rem);
-    background: rgba(255,255,255,0.2);
+    font-size: clamp(5rem, 14vw, 7rem);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(20px);
-    border: 3px solid rgba(255,255,255,0.6);
-    border-radius: 50%;
-    width: 160px;
-    height: 160px;
+    border: 3px solid rgba(255,255,255,0.5);
+    border-radius: 20px; /* Dikurangi dari 50% */
+    width: 180px;
+    height: 120px; /* Lebih pendek */
     cursor: pointer;
     opacity: 0;
     transform: scale(0.5);
@@ -134,22 +134,19 @@ h1.title {
     justify-content: center;
     box-shadow: 
         0 15px 35px rgba(0,0,0,0.3),
-        0 0 0 1px rgba(255,255,255,0.1);
-}
-
-@keyframes slideInUp {
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .cake-btn:hover {
-    transform: scale(1.25) rotate(360deg);
-    background: rgba(255,255,255,0.4);
+    transform: scale(1.15) translateY(-10px);
+    background: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.8);
     box-shadow: 
         0 25px 50px rgba(0,0,0,0.4),
-        0 0 50px rgba(255,255,255,0.3);
+        0 0 30px rgba(255,255,255,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
 /* MUSIC BUTTON */
@@ -189,7 +186,11 @@ h1.title {
 @media (max-width: 768px) {
     .content-container { padding: 15px; }
     .name { letter-spacing: 0 !important; }
-    .cake-btn { width: 140px; height: 140px; }
+    .cake-btn { 
+        width: 160px; 
+        height: 100px;
+        font-size: clamp(4.5rem, 13vw, 6rem);
+    }
     .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
 }
 </style>
@@ -273,54 +274,4 @@ function celebrate() {
     // 🎊 Final burst + heart
     setTimeout(() => {
         confetti({
-            particleCount: 300,
-            spread: 180,
-            origin: { y: 0.2 }
-        });
-        // Heart confetti
-        setTimeout(() => {
-            for(let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    confetti({
-                        particleCount: 5,
-                        angle: 90 + i*10,
-                        spread: 20,
-                        origin: { x: 0.5, y: 0.5 },
-                        colors: ['#ff6b9d', '#ff8fab', '#ffb3c6']
-                    });
-                }, i * 200);
-            }
-        }, 200);
-    }, 1200);
-
-    // Cake shake + bounce
-    const cakeBtn = document.querySelector('.cake-btn');
-    cakeBtn.style.animation = 'shake 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-}
-
-// Shake animation
-const shakeStyle = document.createElement('style');
-shakeStyle.textContent = `
-    @keyframes shake {
-        0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
-        10%, 30%, 50%, 70%, 90% { 
-            transform: translateX(-10px) rotate(-3deg) scale(1.1); 
-        }
-        20%, 40%, 60%, 80% { 
-            transform: translateX(10px) rotate(3deg) scale(1.1); 
-        }
-    }
-`;
-document.head.appendChild(shakeStyle);
-
-// Auto play setelah user interaction
-document.addEventListener('click', function handleFirstClick() {
-    if (!isPlaying) {
-        bgMusic.play().catch(e => console.log('Audio ready'));
-    }
-    document.removeEventListener('click', handleFirstClick);
-}, { once: true });
-</script>
-
-</body>
-</html>
+            particleCount:
