@@ -3,17 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Indah Nauli Damanik </title>
+<title>Happy Birthday Indah Nauli Damanik 💙</title>
 
-<!-- FONT GOOGLE POPPINS (Lebih cocok untuk birthday) -->
+<!-- FONT GOOGLE POPPINS -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body, html {
     height: 100%;
@@ -22,13 +18,9 @@ body, html {
     position: relative;
 }
 
-/* BACKGROUND GRADIENT + PHOTO FALLBACK */
+/* FOTO BACKGROUND ANDA */
 .bg-image {
-    /* GUNAKAN GRADIENT SEBAGAI FALLBACK */
-    background: linear-gradient(-45deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    
+    background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,26 +28,13 @@ body, html {
     position: fixed;
     width: 100%;
     z-index: -2;
+    filter: blur(2px);
+    transform: scale(1.05);
 }
 
-/* KALAU MAU PAKAI FOTO, UPLOAD KE CDN DAN GANTI INI */
-/*
-.bg-image {
-    background-image: url('https://your-image-url-here.jpg');
-}
-*/
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* PHOTO OVERLAY (opsional) */
-.photo-overlay {
+/* OVERLAY */
+.overlay {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.4);
@@ -82,7 +61,7 @@ h1 {
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    text-shadow: 0 0 20px rgba(255,255,255,0.8);
+    text-shadow: 0 0 20px rgba(255,255,255,0.9);
     margin-bottom: 1rem;
     animation: glow 2s ease-in-out infinite alternate;
 }
@@ -92,13 +71,13 @@ h1 {
         text-shadow: 
             0 0 20px rgba(255,255,255,0.8),
             0 0 30px rgba(255,255,255,0.6),
-            0 0 40px rgba(120, 119, 198, 0.5);
+            0 0 40px rgba(103,126,234,0.5);
     }
     to { 
         text-shadow: 
             0 0 30px rgba(255,255,255,1),
             0 0 40px rgba(255,255,255,0.8),
-            0 0 50px rgba(120, 119, 198, 0.8);
+            0 0 50px rgba(103,126,234,0.8);
     }
 }
 
@@ -114,8 +93,8 @@ h1 {
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-8px); }
 }
 
 /* SUBTEXT */
@@ -127,29 +106,37 @@ h1 {
     animation: fadeInUp 1s ease 0.5s both;
 }
 
-/* BUTTON KUE */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CAKE BUTTON */
 .cake-btn {
     font-size: clamp(4rem, 12vw, 6rem);
     background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(20px);
+    border: 3px solid rgba(255,255,255,0.6);
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     cursor: pointer;
     animation: pulse 2s infinite;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(255,255,255,0.1);
 }
 
 .cake-btn:hover {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.25) rotate(360deg);
     background: rgba(255,255,255,0.4);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    animation: none;
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.4),
+        0 0 50px rgba(255,255,255,0.3);
 }
 
 /* MUSIC BUTTON */
@@ -158,82 +145,71 @@ h1 {
     top: 20px;
     right: 20px;
     background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    border: none;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.3);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+    width: 65px;
+    height: 65px;
+    font-size: 1.6rem;
     color: white;
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .music-btn:hover {
     transform: scale(1.1);
     background: rgba(255,255,255,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* ANIMASI */
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.12); }
     100% { transform: scale(1); }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 10px;
-    }
-    
-    h1 {
-        letter-spacing: 2px;
-    }
+    .content-container { padding: 15px; }
+    h1 { letter-spacing: 1px; }
+    .cake-btn { width: 140px; height: 140px; }
+    .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
 }
 </style>
 </head>
 
 <body>
-<!-- BACKGROUND -->
-<div class="">5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG</div>
-<div class="photo-overlay"></div>
+<!-- BACKGROUND FOTO -->
+<div class="bg-image"></div>
+<div class="overlay"></div>
 
 <!-- MUSIC BUTTON -->
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<button class="music-btn" id="musicBtn">🎵</button>
 
 <!-- CONTENT -->
 <div class="content-container">
     <h1>Happy Birthday</h1>
     <h1 class="name">Indah Nauli Damanik 💙</h1>
-    <p class="subtitle">Semoga hari spesialmu penuh kebahagiaan! ✨</p>
+    <p class="subtitle">Semoga selalu bahagia, sehat, dan sukses! ✨</p>
     <button class="cake-btn" onclick="celebrate()">🎂</button>
+    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 2rem;">Klik 🎂 untuk rayakan! 🎉</p>
 </div>
 
-<!-- MUSIK (Audio gratis dari CDN) -->
+<!-- AUDIO -->
 <audio id="bgMusic" loop preload="auto">
-    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-    <!-- Fallback audio data (beep sound) -->
     <source src="mp3.mp3">
 </audio>
 
-<!-- CONFETTI -->
+<!-- CONFETTI CDN -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// MUSIC CONTROL
+// 🎵 MUSIC CONTROL
 let isPlaying = false;
 const bgMusic = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
@@ -241,71 +217,76 @@ const musicBtn = document.getElementById('musicBtn');
 function toggleMusic() {
     if (isPlaying) {
         bgMusic.pause();
-        musicBtn.textContent = '🔇';
+        musicBtn.innerHTML = '🔇';
         isPlaying = false;
     } else {
-        bgMusic.play();
-        musicBtn.textContent = '🎵';
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
         isPlaying = true;
     }
 }
 
-// CELEBRATE FUNCTION
+// 🎉 CELEBRATE FUNCTION
 function celebrate() {
-    // Play music jika belum
+    // Play music
     if (!isPlaying) {
-        bgMusic.play();
-        musicBtn.textContent = '🎵';
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
         isPlaying = true;
     }
 
-    // Multiple confetti bursts
-    for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        }, i * 300);
-    }
+    // 🎊 Confetti Explosion 1
+    confetti({
+        particleCount: 250,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
 
-    // Tambahan confetti dari berbagai arah
+    // 🎊 Confetti dari kiri & kanan
     setTimeout(() => {
         confetti({
             particleCount: 200,
             angle: 60,
-            spread: 55,
-            origin: { x: 0 }
+            spread: 90,
+            origin: { x: 0, y: 0.4 }
         });
         confetti({
             particleCount: 200,
             angle: 120,
-            spread: 55,
-            origin: { x: 1 }
+            spread: 90,
+            origin: { x: 1, y: 0.4 }
         });
-    }, 1500);
+    }, 400);
 
-    // Shake effect pada cake button
+    // 🎊 Final burst
+    setTimeout(() => {
+        confetti({
+            particleCount: 300,
+            spread: 180,
+            origin: { y: 0.2 }
+        });
+    }, 1200);
+
+    // Cake shake effect
     const cakeBtn = document.querySelector('.cake-btn');
-    cakeBtn.style.animation = 'shake 0.5s';
+    cakeBtn.style.animation = 'shake 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
 }
 
 // Shake animation
-const style = document.createElement('style');
-style.textContent = `
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
     @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px); }
-        75% { transform: translateX(10px); }
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-8px) rotate(-2deg); }
+        20%, 40%, 60%, 80% { transform: translateX(8px) rotate(2deg); }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(shakeStyle);
 
-// Auto play music setelah user interaction
+// Auto play setelah user interaction
 document.addEventListener('click', function handleFirstClick() {
     if (!isPlaying) {
-        bgMusic.play().catch(e => console.log('Audio autoplay blocked'));
+        bgMusic.play().catch(e => console.log('Audio ready'));
     }
     document.removeEventListener('click', handleFirstClick);
 }, { once: true });
