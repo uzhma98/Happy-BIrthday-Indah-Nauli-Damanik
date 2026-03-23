@@ -1,158 +1,162 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Indah Nauli Damanik</title>
-    
-    <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Indah Nauli Damanik</title>
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<!-- FONT IOSEVKA -->
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
-        body, html {
-            height: 100%;
-            font-family: 'Iosevka Web', monospace;
-            overflow: hidden;
-            background-color: #0f172a; /* Warna cadangan jika foto gagal muat */
-        }
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* BACKGROUND FOTO */
-        .bg-image {
-            /* PASTIKAN NAMA FILE INI SAMA PERSIS DI GITHUB (Besar/Kecil Hurufnya) */
-            background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
-            
-            height: 100vh;
-            width: 100vw;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            filter: blur(4px) brightness(0.5); /* Blur & Gelap agar teks terbaca jelas */
-            transform: scale(1.1);
-        }
+body, html {
+    height: 100%;
+    font-family: 'Iosevka Web', monospace;
+    overflow: hidden;
+}
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 0;
-        }
+/* BACKGROUND FOTO */
+.bg-image {
+    /* GANTI FOTO DI SINI */
+    background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
 
-        .content-container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    filter: blur(3px);
+    transform: scale(1.1);
+}
 
-        /* EFEK MENGETIK */
-        .typing {
-            font-size: clamp(32px, 8vw, 70px);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            overflow: hidden;
-            border-right: 3px solid white;
-            white-space: nowrap;
-            width: 0;
-            animation: typing 3s steps(30) forwards, blink 0.7s infinite;
-            margin-bottom: 10px;
-        }
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
 
-        /* NAMA DENGAN GLOW */
-        .name {
-            font-size: clamp(28px, 6vw, 55px);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 2s ease forwards;
-            animation-delay: 3s; /* Muncul setelah Happy Birthday selesai mengetik */
-            
-            text-shadow: 
-                0 0 10px #38bdf8,
-                0 0 20px #38bdf8,
-                0 0 40px #0ea5e9;
-        }
+/* CONTENT */
+.content-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
 
-        /* TOMBOL KUE */
-        .cake-btn {
-            margin-top: 50px;
-            font-size: 5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 5s; /* Muncul paling terakhir */
-            transition: transform 0.3s;
-        }
+/* JUDUL */
+h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.5),
+        0 0 40px rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+}
 
-        .cake-btn:hover {
-            transform: scale(1.2);
-        }
+/* TEXT */
+p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
 
-        .pulse {
-            animation: pulse 1.5s infinite ease-in-out;
-        }
+/* BUTTON KUE */
+.cake-btn {
+    font-size: 4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    transition: 0.3s;
+}
 
-        /* ANIMASI KEYFRAMES */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+.cake-btn:hover {
+    transform: scale(1.2);
+    animation: none;
+}
 
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+/* ANIMASI */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
 
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* TYPEWRITER EFFECT */
+.typing {
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    animation: typing 3s steps(30), blink 0.7s infinite;
+}
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
+<div class="bg-image"></div>
+<div class="overlay"></div>
 
-    <div class="content-container">
-        <div style="display: inline-block;">
-            <h1 class="typing">Happy Birthday </h1>
-        </div>
-        
-        <h1 class="name">Indah Nauli Damanik ❤️</h1>
+<div class="content-container">
+    <h1 class="typing">Happy Birthday</h1>
+<h1 class="name">Indah Nauli Damanik ❤️</h1>
 
-        <button class="cake-btn pulse" onclick="celebrate()">🎂</button>
-    </div>
+    <button class="cake-btn" onclick="celebrate()">🎂</button>
+</div>
 
-    <audio id="bgMusic" loop>
-        <source src="mp3.mp3" type="audio/mpeg">
-    </audio>
+<!-- MUSIK -->
+<audio id="bgMusic" loop>
+    <source src="mp3.mp3" type="audio/mpeg">
+</audio>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- CONFETTI -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    <script>
-        function celebrate() {
-            // Putar Musik
-            const music = document.getElementById("bgMusic");
-            music.play().catch(function(error
+<script>
+function celebrate() {
+    // musik
+    document.getElementById("bgMusic").play();
+
+    // confetti
+    confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // efek tambahan
+    setTimeout(() => {
+        confetti({
+            particleCount: 150,
+            spread: 180,
+            origin: { y: 0.3 }
+        });
+    }, 500);
+}
+</script>
+
+</body>
+</html>
