@@ -8,16 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- GLOBAL SETUP --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; position: relative; }
 
-        body, html {
-            height: 100%;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* BACKGROUND */
+        /* --- BACKGROUND --- */
         .bg-image {
             background-image: url('bg.jpg');
             height: 100%;
@@ -30,50 +25,30 @@
             filter: blur(2px);
             transform: scale(1.05);
         }
-
         .overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            z-index: -1;
+            position: fixed; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); z-index: -1;
         }
 
-        /* CONTENT */
+        /* --- CONTENT MAIN --- */
         .content-container {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            color: white;
-            padding: 20px;
-            transition: opacity 0.5s;
+            position: relative; z-index: 10;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 100vh; text-align: center; color: white; padding: 20px;
         }
 
         h1.title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255,255,255,0.9);
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInDown 1s ease 0.3s forwards;
+            font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 700; text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255,255,255,0.9); margin-bottom: 1rem;
+            opacity: 0; animation: fadeInDown 1s ease 0.3s forwards;
         }
 
         .name {
             font-size: clamp(3rem, 9vw, 5.5rem) !important;
             font-family: 'Dancing Script', cursive !important;
-            color: #fff !important;
-            margin-bottom: 1.5rem !important;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 4px solid rgba(255,255,255,0.9);
-            width: 0;
-            animation: handwriting 3s steps(18) 1.3s forwards, blink 0.75s infinite 3.8s;
+            color: #fff !important; margin-bottom: 1.5rem !important;
+            overflow: hidden; white-space: nowrap; border-right: 4px solid rgba(255,255,255,0.9);
+            width: 0; animation: handwriting 3s steps(18) 1.3s forwards, blink 0.75s infinite 3.8s;
         }
 
         @keyframes handwriting { from { width: 0; } to { width: 100%; } }
@@ -81,11 +56,10 @@
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MESSAGE */
         .message-title { font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 0.8rem; opacity: 0; animation: fadeInUp 1s ease 4.3s forwards; }
         .message-text { font-size: clamp(1rem, 2.8vw, 1.3rem); margin-bottom: 2rem; opacity: 0; animation: fadeInUp 1s ease 4.5s forwards; font-weight: 300; }
 
-        /* CAKE */
+        /* --- CAKE --- */
         .cake-container { position: relative; width: 180px; height: 120px; margin: 0 auto; display: block; cursor: pointer; }
         .cake-slice {
             position: absolute; width: 100%; height: 100%; border-radius: 25px;
@@ -99,62 +73,48 @@
         .cake-slice-3 { background: linear-gradient(145deg, #ffb3c6, #ff69b4); z-index: 1; animation-delay: 5.5s; }
 
         @keyframes cakeSliceAppear { from { opacity: 0; transform: scale(0.6) rotateY(-90deg); } to { opacity: 1; transform: scale(1) rotateY(0deg); } }
+        @keyframes cakeSliceExplode { to { transform: scale(0) rotate(720deg); opacity: 0; } }
 
-        /* PHOTO OVERLAY */
+        /* --- PHOTO OVERLAY & CARD --- */
         .photo-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center;
             z-index: 2000; opacity: 0; pointer-events: none; transition: 0.5s;
         }
-
         #trigger-gallery:checked ~ .photo-overlay { opacity: 1; pointer-events: auto; }
         #trigger-gallery:checked ~ .content-container .cake-slice { animation: cakeSliceExplode 0.6s forwards !important; }
 
-        @keyframes cakeSliceExplode { to { transform: scale(0) rotate(720deg); opacity: 0; } }
-
         .photo-card {
-            background: white; padding: 10px; border-radius: 15px;
+            background: white; 
+            padding: 3px; /* BINGKAI TIPIS */
+            border-radius: 12px;
             text-align: center; width: 90%; max-width: 380px;
             transform: scale(0.7); transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
         #trigger-gallery:checked ~ .photo-overlay .photo-card { transform: scale(1); }
 
-        /* GALLERY SLIDER */
+        /* --- GALLERY SYSTEM --- */
         .photo-gallery {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 0;
-            border-radius: 10px;
-            -webkit-overflow-scrolling: touch;
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 0; -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none; -ms-overflow-style: none;
+            touch-action: pan-x; cursor: grab;
         }
         .photo-gallery::-webkit-scrollbar { display: none; }
+        .photo-gallery:active { cursor: grabbing; }
 
-        .slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-        }
-
+        .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; flex-direction: column; }
         .slide img {
-            width: 100%;
-            height: 400px; /* Tinggi foto */
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 10px 10px 0 0; display: block;
+            -webkit-user-drag: none; user-select: none;
         }
 
         .photo-caption { 
-            font-family: 'Dancing Script', cursive; 
-            color: #333; 
-            font-size: 1.2rem; 
-            padding: 15px;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.4;
+            font-family: 'Dancing Script', cursive; color: #333; font-size: 1.1rem; 
+            padding: 15px; min-height: 110px; display: flex; align-items: center; 
+            justify-content: center; line-height: 1.4; text-align: center;
         }
         
         .close-photo { 
@@ -203,34 +163,24 @@
     <div class="photo-overlay">
         <div class="photo-card">
             <div class="photo-gallery">
-                
                 <div class="slide">
                     <img src="IMG_3423 2.JPG">
-                    <div class="photo-caption">Dari potret ini, terpancar nyala semangat yang tak pernah redup, serta jejak-jejak ketekunan yang kau ukir dalam sunyi—sebuah perjalanan panjang penuh usaha, demi merengkuh cita-cita yang kau gantungkan setinggi langit.
-</div>
+                    <div class="photo-caption">Dari potret ini, terpancar nyala semangat yang tak pernah redup...</div>
                 </div>
-
                 <div class="slide">
                     <img src="IMG_1551 2.jpg">
-                    <div class="photo-caption">Semoga kita senantiasa mengarungi perjalanan kehidupan bersama, menelusuri setiap jejak waktu dalam harmoni, dan merangkai kisah di setiap petualangan yang tak pernah usai.
- </div>
+                    <div class="photo-caption">Semoga kita senantiasa mengarungi perjalanan kehidupan bersama...</div>
                 </div>
-                
-                 <div class="slide">
+                <div class="slide">
                     <img src="IMG_7595 4.JPG">
-                    <div class="photo-caption">Terima kasih telah menjadi bagian dari cerita sejauh ini. Hari ini bukan hanya tentang satu hari yang istimewa, tapi tentang menghargai setiap proses yang menjadikan hidup ini begitu berharga untuk dijalani</div>
-                     
+                    <div class="photo-caption">Terima kasih telah menjadi bagian dari cerita sejauh ini...</div>
                 </div>
-
-                     </div>
-
                 <div class="slide">
                     <img src="IMG_2672 2.jpg">
                     <div class="photo-caption">Bahagia terus ya Sayang, I'm so lucky to have you. ✨</div>
-                    
                 </div>
-
-            <p style="font-size: 0.7rem; color: #888; margin-top: 5px;">(GESER ✨)</p>
+            </div> 
+            <p style="font-size: 0.7rem; color: #888; margin-top: 5px;">(GESER KESAMPING ✨)</p>
             <label for="trigger-gallery" class="close-photo">Tutup</label>
         </div>
     </div>
