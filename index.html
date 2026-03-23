@@ -7,78 +7,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        
+        body, html {
+            height: 100%;
             font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            overflow: hidden; /* Mencegah scroll */
         }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 450px;
+
+        /* Background Foto Full Screen */
+        .bg-image {
+            /* GANTI NAMA FILE FOTO DI SINI */
+            background-image: url('IMG_2672 2.jpg'); 
+            
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
             width: 100%;
-            text-align: center;
+            z-index: -1;
+            /* Efek blur sedikit agar teks terbaca */
+            filter: blur(2px); 
+            transform: scale(1.1); /* Untuk menutupi pinggiran blur */
         }
-        /* Style untuk Galeri Foto */
-        .photo-container {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .photo-container img {
+
+        /* Overlay Gelap agar Teks Terbaca */
+        .overlay {
+            position: fixed;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: none; /* Disembunyikan dulu untuk slideshow */
-            animation: fade 1.5s;
+            background: rgba(0, 0, 0, 0.4); /* Hitam transparan */
+            z-index: 0;
         }
-        @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
-        h1 { font-size: 1.4rem; margin-bottom: 10px; color: #2d3436; }
-        p { font-size: 0.95rem; color: #636e72; line-height: 1.6; margin-bottom: 20px; }
-        
-        .controls { display: flex; flex-direction: column; gap: 10px; }
-        .btn {
-            background-color: #2d3436;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: 0.3s;
+        /* Konten Utama (Tanpa Kotak) */
+        .content-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            color: white; /* Teks jadi putih */
+            padding: 20px;
         }
-        .btn-music { background-color: #6c5ce7; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Bayangan teks */
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 300px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Tombol Kue Beranimasi */
+        .cake-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 4rem; /* Ukuran Ikon Kue */
+            transition: transform 0.3s ease;
+            /* Animasi Berdenyut */
+            animation: pulse 1.5s infinite; 
+        }
+
+        .cake-btn:hover {
+            transform: scale(1.2);
+            animation: none; /* Berhenti berdenyut saat di-hover */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Animasi Fade In untuk Teks */
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="photo-container">
-            <img class="mySlides" src="IMG_2672 2.jpg">
-            <img class="mySlides" src="IMG_0298 2.jpg">
-            <img class="mySlides" src="IMG_1551 2.jpg">
-            <img class="mySlides" src="IMG_3366 2.JPG">
-        </div>
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
 
+    <div class="content-container fade-in">
         <h1>Happy Birthday, <br> Indah Nauli Damanik ✨</h1>
-        <p>Semoga setiap langkahmu membawa kebahagiaan dan setiap doa yang kau panjatkan segera dikabulkan. Selamat merayakan hari spesialmu!</p>
+        <p>A special day for a special person. Semoga harimu luar biasa!</p>
         
-        <div class="controls">
-            <button class="btn btn-music" onclick="toggleMusic()">🎵 Putar Musik</button>
-            <button class="btn" onclick="celebrate()">🎉 Berikan Kejutan</button>
-        </div>
+        <button class="cake-btn" onclick="celebrate()">🎂</button>
     </div>
 
     <audio id="bgMusic" loop>
@@ -87,38 +120,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        // Logika Slideshow
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 3000); // Ganti foto setiap 3 detik
-        }
-
-        // Logika Musik
-        const music = document.getElementById("bgMusic");
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                document.querySelector('.btn-music').innerHTML = "⏸ Berhenti Musik";
-            } else {
-                music.pause();
-                document.querySelector('.btn-music').innerHTML = "🎵 Putar Musik";
-            }
-        }
-
-        // Logika Konfeti
+        // Musik akan berputar otomatis setelah klik kue
         function celebrate() {
+            // 1. Putar Musik
+            const music = document.getElementById("bgMusic");
+            music.play();
+            
+            // 2. Efek Konfeti Besar
             confetti({
-                particleCount: 150,
-                spread: 70,
+                particleCount: 200,
+                spread: 100,
                 origin: { y: 0.6 }
             });
         }
