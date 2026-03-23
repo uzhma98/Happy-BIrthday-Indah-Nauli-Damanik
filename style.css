@@ -1,99 +1,42 @@
-/* --- LOGIKA CLIK (CHECKBOX HACK) --- */
-
-/* Sembunyikan Overlay secara default */
-.photo-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Menampilkan foto saat checkbox diklik */
-#trigger-gallery:checked ~ .photo-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Membuat efek kue meledak saat diklik */
-#trigger-gallery:checked ~ .content-container .cake-slice {
-    animation: cakeSliceExplode 0.6s forwards;
-}
-
-/* --- TAMPILAN KARTU (WADAH FOTO) --- */
-
-.photo-card {
-    background: white;
-    padding: 15px 15px 25px 15px;
-    border-radius: 12px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-    max-width: 350px; /* Ukuran pas untuk HP */
-    width: 90%;
-    text-align: center;
-    transform: scale(0.8);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#trigger-gallery:checked ~ .photo-overlay .photo-card {
-    transform: scale(1);
-}
-
 /* --- GALLERY SCROLL (FITUR GESER) --- */
 
 .photo-gallery {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 0; /* Ubah ke 0 agar transisi antar foto mulus */
+    gap: 0;
     border-radius: 8px;
-    margin-bottom: 15px;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Sembunyikan scrollbar */
-.photo-gallery::-webkit-scrollbar {
-    display: none;
-}
-
-.photo-gallery img {
-    flex: 0 0 100%;
+    -webkit-overflow-scrolling: touch; /* Halus di iPhone */
     width: 100%;
-    height: 380px; /* Sesuaikan tinggi foto agar estetik */
-    object-fit: cover;
-    scroll-snap-align: start;
-    border-radius: 8px;
 }
 
-/* --- CAPTION & TOMBOL --- */
+.photo-gallery::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar */
+}
 
+/* Tambahkan class .slide agar foto + teks jadi satu grup */
+.slide {
+    flex: 0 0 100%; /* Satu slide mengambil 100% lebar kartu */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 380px; 
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; /* Lengkung hanya bagian atas */
+}
+
+/* Pindahkan pengaturan caption ke sini */
 .photo-caption {
     font-family: 'Dancing Script', cursive;
     color: #333;
-    font-size: 1.4rem;
-    margin: 10px 0;
+    font-size: 1.2rem; /* Ukuran sedikit diperkecil agar muat teks panjang */
+    padding: 15px;
     font-weight: bold;
-}
-
-.close-photo {
-    display: inline-block;
-    padding: 8px 25px;
-    background: #ff6b9d;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-/* Animasi Meledak */
-@keyframes cakeSliceExplode {
-    to { transform: scale(0) rotate(360deg); opacity: 0; }
+    line-height: 1.4;
+    min-height: 80px; /* Biar tinggi kartu stabil saat teks beda panjang */
 }
