@@ -64,7 +64,7 @@ h1.title {
     text-shadow: 0 0 20px rgba(255,255,255,0.9);
     margin-bottom: 1rem;
     opacity: 0;
-    animation: fadeInDown 1.5s ease 0.5s forwards;
+    animation: fadeInDown 1s ease 0.3s forwards;
 }
 
 @keyframes fadeInDown {
@@ -72,7 +72,7 @@ h1.title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* NAMA - HANDWRITING ANIMASI */
+/* NAMA - HANDWRITING CEPAT (2.5s) */
 .name {
     font-size: clamp(3rem, 9vw, 5.5rem) !important;
     font-family: 'Dancing Script', cursive !important;
@@ -86,7 +86,7 @@ h1.title {
     white-space: nowrap;
     border-right: 4px solid rgba(255,255,255,0.9);
     width: 0;
-    animation: handwriting 4s steps(25) 2s forwards, blink 0.75s infinite 6s;
+    animation: handwriting 2.5s steps(25) 1.3s forwards, blink 0.75s infinite 3.8s;
 }
 
 @keyframes handwriting {
@@ -99,14 +99,14 @@ h1.title {
     51%, 100% { border-color: transparent; }
 }
 
-/* SUBTEXT - FIX TYPO */
+/* SUBTEXT */
 .subtitle {
     font-size: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: 3rem;
     opacity: 0;
     font-weight: 300;
     line-height: 1.6;
-    animation: fadeInUp 1s ease 6.5s forwards;
+    animation: fadeInUp 1s ease 4.3s forwards;
 }
 
 @keyframes fadeInUp {
@@ -114,7 +114,7 @@ h1.title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* CAKE BUTTON - TANPA PULSE/BUBBLE */
+/* CAKE BUTTON */
 .cake-btn {
     font-size: clamp(4rem, 12vw, 6rem);
     background: rgba(255,255,255,0.2);
@@ -127,7 +127,7 @@ h1.title {
     opacity: 0;
     transform: scale(0.5);
     animation: 
-        slideInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 7.5s forwards;
+        slideInUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 5.3s forwards;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     display: flex;
     align-items: center;
@@ -172,7 +172,7 @@ h1.title {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    animation: slideInRight 1s 1s forwards;
+    animation: slideInRight 0.8s 0.8s forwards;
 }
 
 @keyframes slideInRight {
@@ -207,10 +207,9 @@ h1.title {
 <div class="content-container">
     <h1 class="title">Happy Birthday</h1>
     <h1 class="name">Indah Nauli Damanik</h1>
-    <p class="subtitle">Selamat ulang tahun ya
-    <p class="subtittle">Makasih sudah sabar dan selalu ada di samping aku. yang penting kamu sehat dan bahagia terus. I'm so lucky to have you✨</p>
+    <p class="subtitle">Selamat ulang tahun ya, Makasih sudah sabar dan selalu ada di samping aku. yang penting kamu sehat dan bahagia terus. I'm so lucky to have you✨</p>
     <button class="cake-btn" onclick="celebrate()">🎂</button>
-    <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 8.5s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
+    <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
 </div>
 
 <!-- AUDIO -->
