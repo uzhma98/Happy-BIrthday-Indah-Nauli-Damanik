@@ -212,4 +212,153 @@ h1.title {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .content-container { padding: 15px;
+    .content-container { padding: 15px; }
+    .name { letter-spacing: 0 !important; }
+    .message-container { margin: 1rem 1rem 2rem; }
+    .message-text { padding: 1rem 1.5rem; }
+    .cake-btn { font-size: clamp(5rem, 15vw, 7rem); }
+    .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
+}
+</style>
+</head>
+
+<body>
+<!-- BACKGROUND FOTO -->
+<div class="bg-image"></div>
+<div class="overlay"></div>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn">🎵</button>
+
+<!-- CONTENT -->
+<div class="content-container">
+    <h1 class="title">Happy Birthday</h1>
+    <h1 class="name">Indah Nauli Damanik</h1>
+    
+    <!-- MESSAGE RAPiH -->
+    <div class="message-container">
+        <div class="message-title">💌 Pesan Spesial 💌</div>
+        <div class="message-text">
+            Selamat ulang tahun ya! 🎉<br>
+            Makasih sudah sabar dan selalu ada di samping aku.<br>
+            Yang penting kamu sehat dan bahagia terus.<br>
+            <strong>I'm so lucky to have you ✨</strong>
+        </div>
+    </div>
+    
+    <button class="cake-btn" onclick="celebrate()">🎂</button>
+    <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
+</div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="mp3.mp3">
+</audio>
+
+<!-- CONFETTI CDN -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+// 🎵 MUSIC CONTROL
+let isPlaying = false;
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+function toggleMusic() {
+    if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '🔇';
+        isPlaying = false;
+    } else {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
+        isPlaying = true;
+    }
+}
+
+// 🎉 CELEBRATE FUNCTION
+function celebrate() {
+    // Play music
+    if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
+        isPlaying = true;
+    }
+
+    // 🎊 Confetti Explosion 1
+    confetti({
+        particleCount: 250,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // 🎊 Confetti dari kiri & kanan
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            angle: 60,
+            spread: 90,
+            origin: { x: 0, y: 0.4 }
+        });
+        confetti({
+            particleCount: 200,
+            angle: 120,
+            spread: 90,
+            origin: { x: 1, y: 0.4 }
+        });
+    }, 400);
+
+    // 🎊 Final burst + heart
+    setTimeout(() => {
+        confetti({
+            particleCount: 300,
+            spread: 180,
+            origin: { y: 0.2 }
+        });
+        // Heart confetti
+        setTimeout(() => {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 5,
+                        angle: 90 + i*10,
+                        spread: 20,
+                        origin: { x: 0.5, y: 0.5 },
+                        colors: ['#ff6b9d', '#ff8fab', '#ffb3c6']
+                    });
+                }, i * 200);
+            }
+        }, 200);
+    }, 1200);
+
+    // Cake shake + bounce
+    const cakeBtn = document.querySelector('.cake-btn');
+    cakeBtn.style.animation = 'shake 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+}
+
+// Shake animation
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+    @keyframes shake {
+        0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+        10%, 30%, 50%, 70%, 90% { 
+            transform: translateX(-15px) rotate(-10deg) scale(1.2); 
+        }
+        20%, 40%, 60%, 80% { 
+            transform: translateX(15px) rotate(10deg) scale(1.2); 
+        }
+    }
+`;
+document.head.appendChild(shakeStyle);
+
+// Auto play setelah user interaction
+document.addEventListener('click', function handleFirstClick() {
+    if (!isPlaying) {
+        bgMusic.play().catch(e => console.log('Audio ready'));
+    }
+    document.removeEventListener('click', handleFirstClick);
+}, { once: true });
+</script>
+
+</body>
+</html>
