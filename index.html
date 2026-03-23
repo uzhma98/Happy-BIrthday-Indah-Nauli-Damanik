@@ -1,165 +1,134 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Indah Nauli Damanik</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; background: #1a1a1a; }
+/* RESET & BASE */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-        /* BACKGROUND */
-        .bg-image {
-            background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
-            height: 100%; background-position: center; background-repeat: no-repeat;
-            background-size: cover; position: fixed; width: 100%; z-index: -2;
-            filter: blur(3px); transform: scale(1.1);
-        }
-        .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: -1; }
+body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
 
-        /* CONTENT */
-        .content-container {
-            position: relative; z-index: 10; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; height: 100vh;
-            text-align: center; color: white; padding: 20px;
-        }
+/* BACKGROUND SECTION */
+.bg-image {
+    background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    z-index: -2;
+    filter: blur(2px);
+    transform: scale(1.05);
+}
 
-        h1.title {
-            font-size: clamp(2rem, 6vw, 4rem); font-weight: 700; text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5); opacity: 0;
-            animation: fadeInDown 1s ease forwards;
-        }
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+}
 
-        .name {
-            font-size: clamp(2.5rem, 8vw, 5rem); font-family: 'Dancing Script', cursive;
-            color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.8);
-            margin: 10px 0 20px 0; overflow: hidden; white-space: nowrap;
-            border-right: 3px solid #fff; width: 0;
-            animation: handwriting 2.5s steps(25) 1s forwards, blink 0.75s infinite;
-        }
+/* CONTENT LAYOUT */
+.content-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
 
-        /* MESSAGE */
-        .message-text { 
-            font-size: 1.1rem; line-height: 1.6; opacity: 0; 
-            animation: fadeInUp 1s ease 3.5s forwards; margin-bottom: 30px;
-        }
+/* TYPOGRAPHY & ANIMATIONS */
+h1.title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255,255,255,0.9);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInDown 1s ease 0.3s forwards;
+}
 
-        /* CAKE */
-        .cake-container { 
-            position: relative; width: 120px; height: 120px; cursor: pointer; 
-            transition: transform 0.3s; opacity: 0; animation: fadeInUp 1s ease 4.5s forwards;
-        }
-        .cake-container:hover { transform: scale(1.2); }
-        .cake-main { font-size: 5rem; }
+.name {
+    font-size: clamp(3rem, 9vw, 5.5rem) !important;
+    font-family: 'Dancing Script', cursive !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(103,126,234,0.6);
+    margin: 0.5rem 0 1.5rem 0 !important;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid rgba(255,255,255,0.9);
+    width: 0;
+    animation: handwriting 2.5s steps(25) 1.3s forwards, blink 0.75s infinite 3.8s;
+}
 
-        /* GALLERY OVERLAY */
-        #photoGallery {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 1000; display: none;
-            justify-content: center; align-items: center; backdrop-filter: blur(10px);
-        }
-        .gallery-content { width: 90%; max-width: 800px; text-align: center; }
-        .photos-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px; margin: 20px 0; max-height: 60vh; overflow-y: auto; padding: 10px;
-        }
-        .photo-item {
-            aspect-ratio: 1/1; background-size: cover; background-position: center;
-            border-radius: 10px; border: 2px solid #fff;
-        }
-        .close-btn {
-            padding: 10px 25px; background: #ff4757; color: white; border: none;
-            border-radius: 20px; cursor: pointer; font-weight: 600;
-        }
+/* MESSAGE BOX */
+.message-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        /* MUSIC */
-        .music-btn {
-            position: fixed; top: 20px; right: 20px; background: rgba(255,255,255,0.2);
-            border: none; width: 50px; height: 50px; border-radius: 50%; color: white;
-            cursor: pointer; z-index: 100; font-size: 1.2rem;
-        }
+.message-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 4.3s forwards;
+    line-height: 1.2;
+}
 
-        /* ANIMATIONS */
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes handwriting { from { width: 0; } to { width: 100%; } }
-        @keyframes blink { 50% { border-color: transparent; } }
-    </style>
-</head>
-<body>
+.message-text {
+    font-size: clamp(1rem, 2.8vw, 1.3rem);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 4.5s forwards;
+    font-weight: 300;
+    line-height: 1.4;
+}
 
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
+/* 🎂 CAKE COMPONENTS */
+.cake-container {
+    position: relative;
+    width: 180px;
+    height: 120px;
+    margin: 0 auto;
+}
 
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+.cake-slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(5rem, 14vw, 7rem);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: scale(0.8) rotateY(-90deg);
+    animation: cakeSliceAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 5.3s forwards;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 3;
+}
 
-    <div class="content-container">
-        <h1 class="title">🎉 Happy Birthday 🎉</h1>
-        <div class="name">Indah Nauli Damanik</div>
-        
-        <div class="message-text">
-            Makasih sudah sabar dan selalu ada di samping aku.<br>
-            Yang penting kamu sehat dan bahagia terus.<br>
-            <strong>I'm so lucky to have you ✨</strong>
-        </div>
-
-        <div class="cake-container" onclick="celebrate()">
-            <div class="cake-main">🎂</div>
-            <p style="font-size: 0.8rem; margin-top: 10px;">Klik untuk kejutan!</p>
-        </div>
-    </div>
-
-    <div id="photoGallery">
-        <div class="gallery-content">
-            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; margin-bottom: 15px;">Kenangan Kita ✨</h2>
-            <div class="photos-grid">
-                <div class="photo-item" style="background-image: url('IMG_0298 2.jpg');"></div>
-                <div class="photo-item" style="background-image: url('IMG_0323 2.jpg');"></div>
-                <div class="photo-item" style="background-image: url('IMG_1551 2.jpg');"></div>
-                <div class="photo-item" style="background-image: url('IMG_2672 2.jpg');"></div>
-                <div class="photo-item" style="background-image: url('IMG_3366 2.JPG');"></div>
-                <div class="photo-item" style="background-image: url('IMG_7595 4.JPG');"></div>
-            </div>
-            <button class="close-btn" onclick="closeGallery()">Tutup ✨</button>
-        </div>
-    </div>
-
-    <audio id="bgMusic" loop>
-        <source src="mp3.mp3" type="audio/mpeg">
-    </audio>
-
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
-
-        function toggleMusic() {
-            if (isPlaying) {
-                bgMusic.pause();
-                document.getElementById('musicBtn').innerHTML = '🔇';
-            } else {
-                bgMusic.play().catch(e => console.log("User interaction needed"));
-                document.getElementById('musicBtn').innerHTML = '🎵';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        function celebrate() {
-            // Confetti effect
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-            
-            if(!isPlaying) toggleMusic();
-
-            // Munculkan gallery setelah 1 detik
-            setTimeout(() => {
-                document.getElementById('photoGallery').style.display = 'flex';
-            }, 1000);
-        }
-
-        function closeGallery() {
-            document.getElementById('photoGallery').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+/* CAKE SLICES STYLING */
+.cake-slice-1 {
+    background: radial-gradient(ellipse at top, #ff6b9d 0%, #ff8fab 40%, #ffb3c6 70%, transparent 100%),
+                linear-gradient(145deg, #ff99cc 0%, #ff69b4 50%, #ff1493 100%);
+    box-shadow: 0 12px 30px rgba(255,107,157,0.6), 0 0 40px rgba(255,182,193,0.8);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 80% 40%, 100% 60%, 100% 100%, 0% 100%);
