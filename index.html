@@ -133,6 +133,31 @@ h1.title {
     width: 180px;
     height: 120px;
     margin: 0 auto;
+    <!-- CARI BAGIAN INI (sekitar baris 170-180) -->
+<div class="cake-container" onclick="celebrate()">
+    <div class="cake-slice cake-slice-1">🎂</div>
+    <div class="cake-slice cake-slice-2">🎂</div>
+    <div class="cake-slice cake-slice-3">🎂</div>
+</div>
+<p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
+</div> <!-- TUTUP message-container -->
+
+<!-- ❌ TAMBAHKAN DI SINI (SETELAH </div> message-container) -->
+<div class="photo-gallery" id="photoGallery" style="display: none;">
+    <div class="gallery-container">
+        <h2 class="gallery-title">Kenangan Kita ✨</h2>
+        <div class="photos-grid">
+            <div class="photo-item" style="background-image: url('foto1.jpg');"></div>
+            <div class="photo-item" style="background-image: url('foto2.jpg');"></div>
+            <div class="photo-item" style="background-image: url('foto3.jpg');"></div>
+            <div class="photo-item" style="background-image: url('foto4.jpg');"></div>
+            <div class="photo-item" style="background-image: url('foto5.jpg');"></div>
+            <div class="photo-item" style="background-image: url('foto6.jpg');"></div>
+        </div>
+        <button class="close-gallery" onclick="closeGallery()">✨ Tutup Galeri ✨</button>
+    </div>
+</div>
+<!-- ✅ SELESAI -->
 }
 
 .cake-slice {
