@@ -8,12 +8,21 @@
     border-radius: 10px;
     -webkit-overflow-scrolling: touch; /* Halus di iPhone */
     width: 100%;
-    touch-action: pan-x; /* Fokus pada geseran horizontal */
+    touch-action: pan-x; /* Paksa browser mengenali geseran horizontal */
+    cursor: grab; /* Kursor tangan di laptop */
 }
 
-/* Sembunyikan scrollbar agar rapi */
+/* Sembunyikan scrollbar agar rapi di semua browser */
 .photo-gallery::-webkit-scrollbar {
     display: none;
+}
+.photo-gallery {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.photo-gallery:active {
+    cursor: grabbing; /* Kursor mengepal saat diklik */
 }
 
 /* Satu slide mengambil 100% lebar kartu */
@@ -39,8 +48,9 @@
     padding: 15px;
     font-weight: bold;
     line-height: 1.4;
-    min-height: 100px; /* Biar tinggi kartu stabil */
+    min-height: 100px; /* Tinggi kartu stabil */
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
