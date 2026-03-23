@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Indah Nauli Damanik - Party Time! 🎉</title>
+<title>Happy Birthday Indah Nauli Damanik </title>
 
 <!-- FONT GOOGLE POPPINS + HANDWRITING -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -14,68 +14,22 @@
 body, html {
     height: 100%;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 }
 
-/* BACKGROUND ANIMASI PARTY */
+/* FOTO BACKGROUND ANDA */
 .bg-image {
-    background: linear-gradient(45deg, #ff6b9d, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b);
-    background-size: 400% 400%;
-    height: 100vh;
+    background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: fixed;
     width: 100%;
     z-index: -2;
-    animation: gradientShift 8s ease infinite;
-    filter: blur(1px);
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* FLOATING BALLOONS */
-.balloon {
-    position: fixed;
-    font-size: clamp(2rem, 6vw, 4rem);
-    animation: floatUp 12s linear infinite;
-    z-index: 1;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.balloon:hover {
-    transform: scale(1.2) !important;
-    filter: drop-shadow(0 0 20px currentColor);
-}
-
-.balloon:nth-child(1) { left: 10%; animation-delay: 0s; color: #ff6b9d; }
-.balloon:nth-child(2) { left: 20%; animation-delay: 2s; color: #4ecdc4; }
-.balloon:nth-child(3) { right: 15%; animation-delay: 4s; color: #45b7d1; }
-.balloon:nth-child(4) { right: 25%; animation-delay: 6s; color: #f9ca24; }
-.balloon:nth-child(5) { left: 30%; animation-delay: 1s; color: #f0932b; }
-.balloon:nth-child(6) { right: 35%; animation-delay: 3s; color: #eb4d4b; }
-
-@keyframes floatUp {
-    0% {
-        bottom: -20%;
-        transform: translateX(0) rotate(0deg);
-    }
-    25% {
-        transform: translateX(50px) rotate(10deg);
-    }
-    50% {
-        transform: translateX(-30px) rotate(-5deg);
-    }
-    75% {
-        transform: translateX(20px) rotate(8deg);
-    }
-    100% {
-        bottom: 120%;
-        transform: translateX(-40px) rotate(0deg);
-    }
+    filter: blur(2px);
+    transform: scale(1.05);
 }
 
 /* OVERLAY */
@@ -83,7 +37,7 @@ body, html {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     z-index: -1;
 }
 
@@ -101,393 +55,413 @@ body, html {
     padding: 20px;
 }
 
-/* 🎊 SPARKLE EFFECT */
-.sparkle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: sparkleTwinkle 2s linear infinite;
-}
-
-@keyframes sparkleTwinkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-}
-
-/* PARTY BUTTONS */
-.party-buttons {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.btn-party {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    color: white;
+/* JUDUL HAPPY BIRTHDAY - STATIC */
+h1.title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
+    text-shadow: 0 0 20px rgba(255,255,255,0.9);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInDown 1s ease 0.3s forwards;
 }
 
-.btn-party::before {
-    content: '';
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* NAMA - HANDWRITING CEPAT (2.5s) */
+.name {
+    font-size: clamp(3rem, 9vw, 5.5rem) !important;
+    font-family: 'Dancing Script', cursive !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 
+        0 0 20px rgba(255,255,255,0.9),
+        0 0 30px rgba(103,126,234,0.6);
+    margin: 0.5rem 0 1.5rem 0 !important;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid rgba(255,255,255,0.9);
+    width: 0;
+    animation: handwriting 2.5s steps(25) 1.3s forwards, blink 0.75s infinite 3.8s;
+}
+
+@keyframes handwriting {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: rgba(255,255,255,0.9); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* MESSAGE CONTAINER - LEBIH RAPAT */
+.message-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 4.3s forwards;
+    line-height: 1.2;
+}
+
+.message-text {
+    font-size: clamp(1rem, 2.8vw, 1.3rem);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 4.5s forwards;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.message-text br {
+    margin-bottom: 0.4em;
+}
+
+/* 🎂 CAKE BUTTON - PRESISI ULTRA */
+.cake-container {
+    position: relative;
+    width: 180px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.cake-slice {
     position: absolute;
-    top: 0;
-    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: left 0.5s;
-}
-
-.btn-party:hover::before {
-    left: 100%;
-}
-
-.btn-party:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
-
-.btn-dance { background: linear-gradient(45deg, #ff6b9d, #ff8fab); }
-.btn-fireworks { background: linear-gradient(45deg, #4ecdc4, #44a08d); }
-.btn-gifts { background: linear-gradient(45deg, #f9ca24, #f0932b); }
-.btn-party-mode { background: linear-gradient(45deg, #eb4d4b, #e74c3c); }
-
-/* DANCE FLOOR */
-.dance-floor {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(90deg, 
-        #ff6b9d 0%, #4ecdc4 25%, #45b7d1 50%, 
-        #f9ca24 75%, #f0932b 100%);
-    background-size: 200% 200%;
-    z-index: 2;
-    opacity: 0;
-    animation: danceFloorGlow 2s ease forwards;
-}
-
-@keyframes danceFloorGlow {
-    to { opacity: 0.8; }
-}
-
-.dance-floor::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-    animation: discoSweep 1.5s linear infinite;
-}
-
-@keyframes discoSweep {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* GIFT BOXES */
-.gift-box {
-    position: absolute;
-    width: 80px;
-    height: 80px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(5rem, 14vw, 7rem);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     opacity: 0;
+    transform: scale(0.8) rotateY(-90deg);
+    animation: cakeSliceAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 5.3s forwards;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 3;
 }
 
-.gift-box:hover {
-    transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+.cake-slice-1 {
+    background: 
+        radial-gradient(ellipse at top, #ff6b9d 0%, #ff8fab 40%, #ffb3c6 70%, transparent 100%),
+        linear-gradient(145deg, #ff99cc 0%, #ff69b4 50%, #ff1493 100%);
+    box-shadow: 
+        0 12px 30px rgba(255,107,157,0.6),
+        0 0 40px rgba(255,182,193,0.8),
+        inset 0 2px 10px rgba(255,255,255,0.4),
+        inset 0 -2px 8px rgba(255,20,147,0.3);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 80% 40%, 100% 60%, 100% 100%, 0% 100%);
 }
 
-.gift-box.open {
-    animation: giftExplode 1s ease forwards;
+.cake-slice-2 {
+    background: 
+        radial-gradient(ellipse at top, #ff1493 0%, #ff69b4 40%, #ff99cc 70%, transparent 100%),
+        linear-gradient(145deg, #ff69b4 0%, #ff1493 50%, #ff6b9d 100%);
+    box-shadow: 
+        0 12px 30px rgba(255,20,147,0.6),
+        0 0 40px rgba(255,105,180,0.8),
+        inset 0 2px 10px rgba(255,255,255,0.4),
+        inset 0 -2px 8px rgba(255,107,157,0.3);
+    clip-path: polygon(20% 0%, 100% 0%, 100% 40%, 60% 60%, 100% 80%, 100% 100%, 0% 100%, 0% 20%);
+    animation-delay: 5.4s;
+    z-index: 2;
 }
 
-@keyframes giftExplode {
-    0% { transform: scale(1) rotate(0deg); }
-    30% { transform: scale(1.3) rotate(180deg); }
-    100% { transform: scale(0) rotate(720deg); opacity: 0; }
+.cake-slice-3 {
+    background: 
+        radial-gradient(ellipse at top, #ffb3c6 0%, #ff8fab 40%, #ff6b9d 70%, transparent 100%),
+        linear-gradient(145deg, #ffb3c6 0%, #ff8fab 50%, #ff69b4 100%);
+    box-shadow: 
+        0 12px 30px rgba(255,182,193,0.6),
+        0 0 40px rgba(255,139,205,0.8),
+        inset 0 2px 10px rgba(255,255,255,0.4),
+        inset 0 -2px 8px rgba(255,105,180,0.3);
+    clip-path: polygon(0% 0%, 80% 0%, 100% 20%, 100% 100%, 0% 100%);
+    animation-delay: 5.5s;
+    z-index: 1;
+}
+
+/* Animasi muncul slice by slice */
+@keyframes cakeSliceAppear {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.6) rotateY(-90deg) translateZ(0); 
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.05) rotateY(10deg) translateZ(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) rotateY(0deg) translateZ(0); 
+    }
+}
+
+/* Floating presisi */
+@keyframes cakeFloatPrecise {
+    0%, 100% { 
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+    }
+    25% { 
+        transform: translateY(-4px) rotateX(2deg) rotateY(-1deg); 
+    }
+    50% { 
+        transform: translateY(-8px) rotateX(0deg) rotateY(2deg); 
+    }
+    75% { 
+        transform: translateY(-4px) rotateX(-1deg) rotateY(1deg); 
+    }
+}
+
+.cake-slice:hover {
+    transform: scale(1.12) translateY(-12px) rotateX(5deg) rotateY(-3deg) !important;
+    box-shadow: 
+        0 25px 50px rgba(255,107,157,0.8),
+        0 0 60px rgba(255,182,193,1),
+        inset 0 4px 15px rgba(255,255,255,0.6),
+        inset 0 -3px 12px rgba(255,20,147,0.4);
+    z-index: 10;
+}
+
+.cake-slice:active {
+    transform: scale(1.05) translateY(-8px) rotateX(0deg) !important;
+}
+
+/* Hover sparkle effect */
+.cake-slice::before {
+    content: '✨';
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: sparkleFloat 2s ease-in-out infinite 0.5s;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.cake-slice:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+    50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* MUSIC BUTTON */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    font-size: 1.6rem;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: slideInRight 0.8s 0.8s forwards;
+}
+
+@keyframes slideInRight {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .party-buttons { flex-direction: column; align-items: center; }
-    .btn-party { width: 200px; }
-    .dance-floor { height: 150px; }
+    .content-container { padding: 15px; }
+    .name { letter-spacing: 0 !important; margin-bottom: 1rem !important; }
+    .message-title { margin-bottom: 0.6rem; }
+    .message-text { margin-bottom: 1.5rem; line-height: 1.3; }
+    .cake-container { width: 160px; height: 100px; }
+    .cake-slice { font-size: clamp(4.5rem, 13vw, 6rem); }
+    .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
 }
 </style>
 </head>
 
 <body>
-<!-- BACKGROUND -->
+<!-- BACKGROUND FOTO -->
 <div class="bg-image"></div>
 <div class="overlay"></div>
 
-<!-- 🎈 BALLOONS -->
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-<div class="balloon" onclick="popBalloon(this)">🎈</div>
-
-<!-- DANCE FLOOR -->
-<div class="dance-floor" id="danceFloor"></div>
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn">🎵</button>
 
 <!-- CONTENT -->
 <div class="content-container">
-    <h1 class="title" style="animation: bounceIn 1.5s ease 0.5s forwards; font-size: clamp(3rem, 8vw, 6rem);">
-        🎉 PARTY TIME! 🎉
-    </h1>
+    <h1 class="title">🎉Happy Birthday🎉</h1>
+    <h1 class="name">Indah Nauli Damanik</h1>
     
-    <div class="message-container" style="max-width: 700px; margin: 2rem 0;">
-        <h2 style="font-size: clamp(1.8rem, 5vw, 3rem); font-family: 'Dancing Script', cursive; margin-bottom: 1rem;">
-            Indah Nauli Damanik
-        </h2>
-        <p style="font-size: clamp(1.2rem, 3.5vw, 1.8rem); font-weight: 300; line-height: 1.6; margin-bottom: 2rem;">
-            Selamat ulang tahun kece! 🎂<br>
-            Mari rayakan momen spesialmu dengan penuh keceriaan! ✨
-        </p>
+    <!-- MESSAGE RAPiH - VERSI LEBIH RAPAT -->
+    <div class="message-container">
+        <div class="message-title">Selamat ulang tahun ya! 🎉</div>
+        <div class="message-text">
+            Makasih sudah sabar dan selalu ada di samping aku.<br>
+            Yang penting kamu sehat dan bahagia terus.<br>
+            <strong>I'm so lucky to have you ✨</strong>
+        </div>
+        <!-- 🎂 KUE 3D PRESISI -->
+        <div class="cake-container" onclick="celebrate()">
+            <div class="cake-slice cake-slice-1">🎂</div>
+            <div class="cake-slice cake-slice-2">🎂</div>
+            <div class="cake-slice cake-slice-3">🎂</div>
+        </div>
+        <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
     </div>
-
-    <!-- 🎊 PARTY BUTTONS -->
-    <div class="party-buttons">
-        <button class="btn-party btn-dance" onclick="startDanceParty()">💃 Dance Party</button>
-        <button class="btn-party btn-fireworks" onclick="fireworksShow()">🎆 Fireworks</button>
-        <button class="btn-party btn-gifts" onclick="openGifts()">🎁 Open Gifts</button>
-        <button class="btn-party btn-party-mode" onclick="ultimateParty()">🎉 Party Mode</button>
-    </div>
-
-    <p style="font-size: 1.1rem; margin-top: 2rem; opacity: 0.9;">
-        Klik balon untuk meledak! 🎈 | Hover untuk efek spesial ✨
-    </p>
 </div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="mp3.mp3">
+</audio>
 
 <!-- CONFETTI CDN -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// 🔥 ULTIMATE PARTY FUNCTIONS
+// 🎵 MUSIC CONTROL
+let isPlaying = false;
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
 
-// Pop Balloon
-function popBalloon(balloon) {
+function toggleMusic() {
+    if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '🔇';
+        isPlaying = false;
+    } else {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
+        isPlaying = true;
+    }
+}
+
+// 🎉 CELEBRATE FUNCTION
+function celebrate() {
+    // Play music
+    if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '💥';
+        isPlaying = true;
+    }
+
+    // 🎊 Confetti Explosion 1
     confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { 
-            x: parseFloat(balloon.style.left) || 0.5, 
-            y: 0.8 
-        },
-        colors: ['#ff6b9d', '#4ecdc4', '#f9ca24']
-    });
-    balloon.style.opacity = '0';
-    balloon.style.transform = 'scale(0)';
-    setTimeout(() => balloon.remove(), 500);
-}
-
-// 💃 Dance Party
-function startDanceParty() {
-    document.body.style.animation = 'none';
-    
-    // Dance floor lights
-    const danceFloor = document.getElementById('danceFloor');
-    danceFloor.style.animationDuration = '0.5s';
-    
-    // Dancing emojis
-    const dancers = ['💃', '🕺', '🎉', '✨', '🎊', '🥳'];
-    for(let i = 0; i < 20; i++) {
-        setTimeout(() => {
-            createDancer(dancers[Math.floor(Math.random() * dancers.length)]);
-        }, i * 100);
-    }
-    
-    // Music beat visualizer
-    beatVisualizer();
-}
-
-// Create dancing emoji
-function createDancer(emoji) {
-    const dancer = document.createElement('div');
-    dancer.innerHTML = emoji;
-    dancer.style.cssText = `
-        position: fixed;
-        font-size: 2rem;
-        left: ${Math.random() * 80 + 10}%;
-        top: 50%;
-        z-index: 20;
-        pointer-events: none;
-        animation: danceMove 1.5s ease-out forwards;
-    `;
-    document.body.appendChild(dancer);
-    
-    setTimeout(() => dancer.remove(), 1500);
-}
-
-// 🎆 Fireworks Show
-function fireworksShow() {
-    for(let i = 0; i < 15; i++) {
-        setTimeout(() => {
-            const colors = ['#ff6b9d', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b'];
-            confetti({
-                particleCount: 100,
-                angle: 60 + i * 4,
-                spread: 80,
-                origin: { x: Math.random() * 0.4 + 0.3 },
-                colors: [colors[i % colors.length]]
-            });
-            confetti({
-                particleCount: 100,
-                angle: 120 - i * 4,
-                spread: 80,
-                origin: { x: Math.random() * 0.4 + 0.6 },
-                colors: [colors[i % colors.length]]
-            });
-        }, i * 200);
-    }
-}
-
-// 🎁 Open Gifts
-function openGifts() {
-    const gifts = ['📱', '💐', '💍', '👗', '🎸', '✨'];
-    const colors = ['#ff6b9d', '#4ecdc4', '#f9ca24', '#eb4d4b', '#45b7d1'];
-    
-    for(let i = 0; i < 12; i++) {
-        setTimeout(() => {
-            const gift = document.createElement('div');
-            gift.className = 'gift-box';
-            gift.innerHTML = gifts[Math.floor(Math.random() * gifts.length)];
-            gift.style.cssText = `
-                left: ${Math.random() * 80 + 10}%;
-                top: ${Math.random() * 40 + 20}%;
-                background: linear-gradient(45deg, ${colors[Math.floor(Math.random()*5)]}, #fff);
-                border-radius: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 2rem;
-                border: 3px solid #fff;
-            `;
-            gift.onclick = () => gift.classList.add('open');
-            document.body.appendChild(gift);
-            
-            setTimeout(() => {
-                if(gift.parentNode) gift.classList.add('open');
-            }, 2000);
-        }, i * 300);
-    }
-}
-
-// 🎵 Beat Visualizer
-function beatVisualizer() {
-    const beats = 16;
-    for(let i = 0; i < beats; i++) {
-        setTimeout(() => {
-            createSparkleWave();
-        }, i * 150);
-    }
-}
-
-function createSparkleWave() {
-    for(let i = 0; i < 15; i++) {
-        setTimeout(() => {
-            createSparkle(
-                Math.random() * window.innerWidth,
-                Math.random() * window.innerHeight / 2
-            );
-        }, i * 50);
-    }
-}
-
-function createSparkle(x, y) {
-    const sparkle = document.createElement('div');
-    sparkle.className = 'sparkle';
-    sparkle.style.left = x + 'px';
-    sparkle.style.top = y + 'px';
-    sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
-    document.body.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 2000);
-}
-
-// 🚀 Ultimate Party Mode
-function ultimateParty() {
-    // Everything at once!
-    startDanceParty();
-    setTimeout(fireworksShow, 500);
-    setTimeout(openGifts, 1000);
-    
-    // Screen shake
-    document.body.style.animation = 'shake 0.5s ease-in-out';
-    
-    // Continuous balloons
-    const balloonInterval = setInterval(() => {
-        if(Math.random() < 0.3) {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.innerHTML = '🎈';
-            balloon.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
-            balloon.onclick = () => popBalloon(balloon);
-            document.body.appendChild(balloon);
-            setTimeout(() => balloon.remove(), 12000);
-        }
-    }, 1000);
-    
-    setTimeout(() => clearInterval(balloonInterval), 10000);
-}
-
-// CSS Animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes bounceIn {
-        0% { opacity: 0; transform: scale(0.3); }
-        50% { opacity: 1; transform: scale(1.05); }
-        70% { transform: scale(0.9); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-    @keyframes danceMove {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
-    }
-    @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
-    }
-`;
-document.head.appendChild(style);
-
-// Auto party start after 3 seconds
-setTimeout(() => {
-    confetti({
-        particleCount: 100,
+        particleCount: 250,
         spread: 120,
         origin: { y: 0.6 }
     });
-}, 3000);
-</script>
 
-<!-- MUSIC (keep your original mp3) -->
-<audio id="partyMusic" loop preload="auto">
-    <source src="mp3.mp3">
-</audio>
+    // 🎊 Confetti dari kiri & kanan
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            angle: 60,
+            spread: 90,
+            origin: { x: 0, y: 0.4 }
+        });
+        confetti({
+            particleCount: 200,
+            angle: 120,
+            spread: 90,
+            origin: { x: 1, y: 0.4 }
+        });
+    }, 400);
+
+    // 🎊 Final burst + heart
+    setTimeout(() => {
+        confetti({
+            particleCount: 300,
+            spread: 180,
+            origin: { y: 0.2 }
+        });
+        // Heart confetti
+        setTimeout(() => {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 5,
+                        angle: 90 + i*10,
+                        spread: 20,
+                        origin: { x: 0.5, y: 0.5 },
+                        colors: ['#ff6b9d', '#ff8fab', '#ffb3c6']
+                    });
+                }, i * 200);
+            }
+        }, 200);
+    }, 1200);
+
+    // Cake slices explode presisi
+    const slices = document.querySelectorAll('.cake-slice');
+    slices.forEach((slice, index) => {
+        setTimeout(() => {
+            slice.style.animation = 'cakeSliceExplode 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, index * 100);
+    });
+}
+
+// Cake slice explode animation
+const explodeStyle = document.createElement('style');
+explodeStyle.textContent = `
+    @keyframes cakeSliceExplode {
+        0% { 
+            transform: scale(1) rotateY(0deg); 
+        }
+        40% { 
+            transform: scale(1.3) rotateY(180deg) rotateZ(360deg); 
+        }
+        100% { 
+            transform: scale(0) rotateY(720deg) rotateZ(1080deg) translateY(-100px); 
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(explodeStyle);
+
+// Auto play setelah user interaction
+document.addEventListener('click', function handleFirstClick() {
+    if (!isPlaying) {
+        bgMusic.play().catch(e => console.log('Audio ready'));
+    }
+    document.removeEventListener('click', handleFirstClick);
+}, { once: true });
+</script>
 
 </body>
 </html>
