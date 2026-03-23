@@ -6,7 +6,7 @@
 <title>Happy Birthday Indah Nauli Damanik </title>
 
 <!-- FONT GOOGLE POPPINS + HANDWRITING -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,156 +72,31 @@ h1.title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ✨ NAMA - HANDWRITING ULTRA REALISTIS ✨ */
+/* NAMA - HANDWRITING CEPAT (2.5s) */
 .name {
     font-size: clamp(3rem, 9vw, 5.5rem) !important;
-    font-family: 'Great Vibes', 'Dancing Script', cursive !important;
-    font-weight: 400 !important;
+    font-family: 'Dancing Script', cursive !important;
+    font-weight: 700 !important;
     color: #fff !important;
     text-shadow: 
         0 0 20px rgba(255,255,255,0.9),
-        0 0 30px rgba(103,126,234,0.6),
-        0 0 40px rgba(255,182,193,0.4);
+        0 0 30px rgba(103,126,234,0.6);
     margin: 0.5rem 0 1.5rem 0 !important;
     overflow: hidden;
     white-space: nowrap;
+    border-right: 4px solid rgba(255,255,255,0.9);
     width: 0;
-    position: relative;
-    
-    /* ✨ MAGIC LINE ANIMATION ✨ */
-    background: linear-gradient(90deg, transparent 0%, #fff 50%, transparent 100%);
-    background-size: 200% 100%;
-    background-position: 100%;
-    background-repeat: no-repeat;
-    animation: 
-        magicWrite 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.3s forwards,
-        glowPulse 2s ease-in-out 4.5s infinite;
+    animation: handwriting 2.5s steps(25) 1.3s forwards, blink 0.75s infinite 3.8s;
 }
 
-@keyframes magicWrite {
-    0% { 
-        width: 0; 
-        background-position: 100% 0;
-    }
-    50% { 
-        width: 60%; 
-        background-position: 0 0;
-        filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
-    }
-    100% { 
-        width: 100%; 
-        background-position: -100% 0;
-        filter: drop-shadow(0 0 30px rgba(255,182,193,0.6));
-    }
+@keyframes handwriting {
+    from { width: 0; }
+    to { width: 100%; }
 }
 
-@keyframes glowPulse {
-    0%, 100% { 
-        text-shadow: 
-            0 0 20px rgba(255,255,255,0.9),
-            0 0 30px rgba(103,126,234,0.6),
-            0 0 40px rgba(255,182,193,0.4);
-        transform: scale(1);
-    }
-    50% { 
-        text-shadow: 
-            0 0 30px rgba(255,255,255,1),
-            0 0 50px rgba(103,126,234,0.8),
-            0 0 60px rgba(255,182,193,0.7);
-        transform: scale(1.03);
-    }
-}
-
-/* ✨ TYPEWRITER CURSOR ULTRA SMOOTH ✨ */
-.name::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, #fff, #ff6b9d);
-    animation: 
-        typewriterBlink 0.8s infinite 4.5s,
-        cursorBounce 2s ease-in-out infinite 4.5s;
-    box-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-
-@keyframes typewriterBlink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-@keyframes cursorBounce {
-    0%, 100% { transform: translateY(0px) scaleY(1); }
-    25% { transform: translateY(-2px) scaleY(1.2); }
-    75% { transform: translateY(1px) scaleY(0.9); }
-}
-
-/* ✨ WRITING PARTICLES ✨ */
-.name::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, rgba(255,107,157,0.8) 1px, transparent 1px);
-    background-size: 30px 30px, 40px 40px;
-    animation: particleFloat 4s linear infinite 1.3s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
-
-@keyframes particleFloat {
-    0% { opacity: 0; transform: translateX(-100%) translateY(20px); }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; transform: translateX(100%) translateY(-20px); }
-}
-
-/* LETTER BY LETTER BOUNCE */
-.name span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px) scale(0.8);
-    animation: letterBounce 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-}
-
-.name span:nth-child(1) { animation-delay: 1.5s; }
-.name span:nth-child(2) { animation-delay: 1.6s; }
-.name span:nth-child(3) { animation-delay: 1.7s; }
-.name span:nth-child(4) { animation-delay: 1.8s; }
-.name span:nth-child(5) { animation-delay: 1.9s; }
-.name span:nth-child(6) { animation-delay: 2.0s; }
-.name span:nth-child(7) { animation-delay: 2.1s; }
-.name span:nth-child(8) { animation-delay: 2.2s; }
-.name span:nth-child(9) { animation-delay: 2.3s; }
-.name span:nth-child(10) { animation-delay: 2.4s; }
-.name span:nth-child(11) { animation-delay: 2.5s; }
-.name span:nth-child(12) { animation-delay: 2.6s; }
-.name span:nth-child(13) { animation-delay: 2.7s; }
-.name span:nth-child(14) { animation-delay: 2.8s; }
-.name span:nth-child(15) { animation-delay: 2.9s; }
-.name span:nth-child(16) { animation-delay: 3.0s; }
-.name span:nth-child(17) { animation-delay: 3.1s; }
-
-@keyframes letterBounce {
-    0% { 
-        opacity: 0; 
-        transform: translateY(30px) scale(0.8) rotate(-5deg); 
-    }
-    60% { 
-        opacity: 1; 
-        transform: translateY(-10px) scale(1.1) rotate(2deg); 
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateY(0) scale(1) rotate(0deg); 
-    }
+@keyframes blink {
+    0%, 50% { border-color: rgba(255,255,255,0.9); }
+    51%, 100% { border-color: transparent; }
 }
 
 /* MESSAGE CONTAINER - LEBIH RAPAT */
@@ -235,7 +110,7 @@ h1.title {
     font-weight: 600;
     margin-bottom: 0.8rem;
     opacity: 0;
-    animation: fadeInUp 1s ease 5s forwards;
+    animation: fadeInUp 1s ease 4.3s forwards;
     line-height: 1.2;
 }
 
@@ -243,7 +118,7 @@ h1.title {
     font-size: clamp(1rem, 2.8vw, 1.3rem);
     margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeInUp 1s ease 5.2s forwards;
+    animation: fadeInUp 1s ease 4.5s forwards;
     font-weight: 300;
     line-height: 1.4;
 }
@@ -252,17 +127,12 @@ h1.title {
     margin-bottom: 0.4em;
 }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* 🎂 CAKE BUTTON - PRESISI ULTRA */
 .cake-container {
     position: relative;
     width: 180px;
     height: 120px;
-    margin: 2rem auto;
+    margin: 0 auto;
 }
 
 .cake-slice {
@@ -280,7 +150,7 @@ h1.title {
     text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     opacity: 0;
     transform: scale(0.8) rotateY(-90deg);
-    animation: cakeSliceAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 6.5s forwards;
+    animation: cakeSliceAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 5.3s forwards;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 3;
 }
@@ -307,7 +177,7 @@ h1.title {
         inset 0 2px 10px rgba(255,255,255,0.4),
         inset 0 -2px 8px rgba(255,107,157,0.3);
     clip-path: polygon(20% 0%, 100% 0%, 100% 40%, 60% 60%, 100% 80%, 100% 100%, 0% 100%, 0% 20%);
-    animation-delay: 6.6s;
+    animation-delay: 5.4s;
     z-index: 2;
 }
 
@@ -321,10 +191,11 @@ h1.title {
         inset 0 2px 10px rgba(255,255,255,0.4),
         inset 0 -2px 8px rgba(255,105,180,0.3);
     clip-path: polygon(0% 0%, 80% 0%, 100% 20%, 100% 100%, 0% 100%);
-    animation-delay: 6.7s;
+    animation-delay: 5.5s;
     z-index: 1;
 }
 
+/* Animasi muncul slice by slice */
 @keyframes cakeSliceAppear {
     0% { 
         opacity: 0; 
@@ -340,6 +211,22 @@ h1.title {
     }
 }
 
+/* Floating presisi */
+@keyframes cakeFloatPrecise {
+    0%, 100% { 
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+    }
+    25% { 
+        transform: translateY(-4px) rotateX(2deg) rotateY(-1deg); 
+    }
+    50% { 
+        transform: translateY(-8px) rotateX(0deg) rotateY(2deg); 
+    }
+    75% { 
+        transform: translateY(-4px) rotateX(-1deg) rotateY(1deg); 
+    }
+}
+
 .cake-slice:hover {
     transform: scale(1.12) translateY(-12px) rotateX(5deg) rotateY(-3deg) !important;
     box-shadow: 
@@ -350,6 +237,11 @@ h1.title {
     z-index: 10;
 }
 
+.cake-slice:active {
+    transform: scale(1.05) translateY(-8px) rotateX(0deg) !important;
+}
+
+/* Hover sparkle effect */
 .cake-slice::before {
     content: '✨';
     position: absolute;
@@ -370,6 +262,11 @@ h1.title {
 @keyframes sparkleFloat {
     0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
     50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* MUSIC BUTTON */
@@ -411,7 +308,7 @@ h1.title {
     .name { letter-spacing: 0 !important; margin-bottom: 1rem !important; }
     .message-title { margin-bottom: 0.6rem; }
     .message-text { margin-bottom: 1.5rem; line-height: 1.3; }
-    .cake-container { width: 160px; height: 100px; margin: 1.5rem auto; }
+    .cake-container { width: 160px; height: 100px; }
     .cake-slice { font-size: clamp(4.5rem, 13vw, 6rem); }
     .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
 }
@@ -421,4 +318,150 @@ h1.title {
 <body>
 <!-- BACKGROUND FOTO -->
 <div class="bg-image"></div>
-<div class
+<div class="overlay"></div>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn">🎵</button>
+
+<!-- CONTENT -->
+<div class="content-container">
+    <h1 class="title">🎉Happy Birthday🎉</h1>
+    <h1 class="name">Indah Nauli Damanik</h1>
+    
+    <!-- MESSAGE RAPiH - VERSI LEBIH RAPAT -->
+    <div class="message-container">
+        <div class="message-title">Selamat ulang tahun ya! 🎉</div>
+        <div class="message-text">
+            Makasih sudah sabar dan selalu ada di samping aku.<br>
+            Yang penting kamu sehat dan bahagia terus.<br>
+            <strong>I'm so lucky to have you ✨</strong>
+        </div>
+        <!-- 🎂 KUE 3D PRESISI -->
+        <div class="cake-container" onclick="celebrate()">
+            <div class="cake-slice cake-slice-1">🎂</div>
+            <div class="cake-slice cake-slice-2">🎂</div>
+            <div class="cake-slice cake-slice-3">🎂</div>
+        </div>
+        <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
+    </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="mp3.mp3">
+</audio>
+
+<!-- CONFETTI CDN -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+// 🎵 MUSIC CONTROL
+let isPlaying = false;
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+function toggleMusic() {
+    if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '🔇';
+        isPlaying = false;
+    } else {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '🎵';
+        isPlaying = true;
+    }
+}
+
+// 🎉 CELEBRATE FUNCTION
+function celebrate() {
+    // Play music
+    if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '💥';
+        isPlaying = true;
+    }
+
+    // 🎊 Confetti Explosion 1
+    confetti({
+        particleCount: 250,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // 🎊 Confetti dari kiri & kanan
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            angle: 60,
+            spread: 90,
+            origin: { x: 0, y: 0.4 }
+        });
+        confetti({
+            particleCount: 200,
+            angle: 120,
+            spread: 90,
+            origin: { x: 1, y: 0.4 }
+        });
+    }, 400);
+
+    // 🎊 Final burst + heart
+    setTimeout(() => {
+        confetti({
+            particleCount: 300,
+            spread: 180,
+            origin: { y: 0.2 }
+        });
+        // Heart confetti
+        setTimeout(() => {
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 5,
+                        angle: 90 + i*10,
+                        spread: 20,
+                        origin: { x: 0.5, y: 0.5 },
+                        colors: ['#ff6b9d', '#ff8fab', '#ffb3c6']
+                    });
+                }, i * 200);
+            }
+        }, 200);
+    }, 1200);
+
+    // Cake slices explode presisi
+    const slices = document.querySelectorAll('.cake-slice');
+    slices.forEach((slice, index) => {
+        setTimeout(() => {
+            slice.style.animation = 'cakeSliceExplode 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, index * 100);
+    });
+}
+
+// Cake slice explode animation
+const explodeStyle = document.createElement('style');
+explodeStyle.textContent = `
+    @keyframes cakeSliceExplode {
+        0% { 
+            transform: scale(1) rotateY(0deg); 
+        }
+        40% { 
+            transform: scale(1.3) rotateY(180deg) rotateZ(360deg); 
+        }
+        100% { 
+            transform: scale(0) rotateY(720deg) rotateZ(1080deg) translateY(-100px); 
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(explodeStyle);
+
+// Auto play setelah user interaction
+document.addEventListener('click', function handleFirstClick() {
+    if (!isPlaying) {
+        bgMusic.play().catch(e => console.log('Audio ready'));
+    }
+    document.removeEventListener('click', handleFirstClick);
+}, { once: true });
+</script>
+
+</body>
+</html>
