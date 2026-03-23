@@ -462,6 +462,12 @@ document.addEventListener('click', function handleFirstClick() {
     document.removeEventListener('click', handleFirstClick);
 }, { once: true });
 </script>
-
+<div class="photo-overlay" id="photoOverlay">
+    <div class="photo-card">
+        <img src="foto_indah.jpg" alt="Indah Nauli Damanik">
+        <div class="photo-caption">You are the most beautiful person I know! ❤️</div>
+    </div>
+    <button class="close-photo" onclick="closePhoto()">Tutup</button>
+</div>
 </body>
 </html>
