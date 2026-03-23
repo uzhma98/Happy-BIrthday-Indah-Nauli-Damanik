@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Indah Nauli Damanik</title>
 
-<!-- FONT IOSEVKA -->
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 <style>
@@ -15,13 +14,11 @@ body, html {
     height: 100%;
     font-family: 'Iosevka Web', monospace;
     overflow: hidden;
+    background: #0f172a;
 }
 
-/* BACKGROUND FOTO */
 .bg-image {
-    /* GANTI FOTO DI SINI */
     background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
-
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,19 +26,17 @@ body, html {
     position: fixed;
     width: 100%;
     z-index: -1;
-    filter: blur(3px);
+    filter: blur(3px) brightness(0.6); /* Sedikit digelapkan agar teks putih kontras */
     transform: scale(1.1);
 }
 
-/* OVERLAY */
 .overlay {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
 }
 
-/* CONTENT */
 .content-container {
     position: relative;
     z-index: 1;
@@ -55,62 +50,68 @@ body, html {
     padding: 20px;
 }
 
-/* JUDUL */
-h1 {
-    font-size: clamp(36px, 6vw, 72px);
+/* PERBAIKAN TYPING */
+.typing-container {
+    display: inline-block;
+}
+
+.typing {
+    font-size: clamp(30px, 6vw, 60px);
     letter-spacing: 5px;
     text-transform: uppercase;
+    overflow: hidden;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    width: 0; /* Mulai dari nol */
+    animation: typing 3s steps(30) forwards, blink 0.7s infinite;
+    margin-bottom: 10px;
+}
+
+/* PERBAIKAN CLASS NAME */
+.name {
+    font-size: clamp(28px, 5vw, 50px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 3s; /* Muncul setelah typing selesai */
+    
+    /* Glow Biru */
     text-shadow:
-        0 0 10px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,255,255,0.5),
-        0 0 40px rgba(255,255,255,0.3);
-    margin-bottom: 20px;
+        0 0 10px #38bdf8,
+        0 0 20px #38bdf8,
+        0 0 40px #0ea5e9;
+    margin-bottom: 30px;
 }
 
-/* TEXT */
-p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
-
-/* BUTTON KUE */
 .cake-btn {
-    font-size: 4rem;
+    font-size: 5rem;
     background: none;
     border: none;
     cursor: pointer;
-    animation: pulse 1.5s infinite;
-    transition: 0.3s;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+    animation-delay: 4.5s; /* Muncul paling terakhir */
 }
 
-.cake-btn:hover {
-    transform: scale(1.2);
-    animation: none;
+.pulse { animation: pulse 1.5s infinite; }
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% } /* Mengisi seluruh area teks */
 }
 
-/* ANIMASI */
+@keyframes blink { 50% { border-color: transparent } }
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
-}
-
-/* TYPEWRITER EFFECT */
-.typing {
-    overflow: hidden;
-    border-right: 2px solid white;
-    white-space: nowrap;
-    animation: typing 3s steps(30), blink 0.7s infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
 }
 </style>
 </head>
@@ -121,33 +122,34 @@ p {
 <div class="overlay"></div>
 
 <div class="content-container">
-    <h1 class="typing">Happy Birthday</h1>
-<h1 class="name">Indah Nauli Damanik 💙</h1>
+    <div class="typing-container">
+        <h1 class="typing">Happy Birthday ✨</h1>
+    </div>
+    <h1 class="name">Indah Nauli Damanik 💙</h1>
 
-    <button class="cake-btn" onclick="celebrate()">🎂</button>
+    <button class="cake-btn pulse" onclick="celebrate()">🎂</button>
 </div>
 
-<!-- MUSIK -->
 <audio id="bgMusic" loop>
     <source src="mp3.mp3" type="audio/mpeg">
 </audio>
 
-<!-- CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 function celebrate() {
-    // musik
-    document.getElementById("bgMusic").play();
+    // Putar musik
+    const music = document.getElementById("bgMusic");
+    music.play().catch(e => console.log("Audio play blocked"));
 
-    // confetti
+    // Confetti Pertama
     confetti({
         particleCount: 200,
         spread: 120,
         origin: { y: 0.6 }
     });
 
-    // efek tambahan
+    // Confetti Kedua (setelah jeda)
     setTimeout(() => {
         confetti({
             particleCount: 150,
