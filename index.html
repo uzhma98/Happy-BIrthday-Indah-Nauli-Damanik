@@ -99,7 +99,7 @@ h1.title {
     51%, 100% { border-color: transparent; }
 }
 
-/* SUBTEXT */
+/* SUBTEXT - FIX TYPO */
 .subtitle {
     font-size: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: 3rem;
@@ -114,7 +114,7 @@ h1.title {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* CAKE BUTTON */
+/* CAKE BUTTON - TANPA PULSE/BUBBLE */
 .cake-btn {
     font-size: clamp(4rem, 12vw, 6rem);
     background: rgba(255,255,255,0.2);
@@ -125,10 +125,9 @@ h1.title {
     height: 160px;
     cursor: pointer;
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0.5);
     animation: 
-        popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 7.5s forwards,
-        pulse 2s infinite 8.3s;
+        slideInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 7.5s forwards;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     display: flex;
     align-items: center;
@@ -138,10 +137,10 @@ h1.title {
         0 0 0 1px rgba(255,255,255,0.1);
 }
 
-@keyframes popIn {
+@keyframes slideInUp {
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translateY(0);
     }
 }
 
@@ -186,13 +185,6 @@ h1.title {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ANIMASI PULSE */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
-}
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .content-container { padding: 15px; }
@@ -216,7 +208,7 @@ h1.title {
     <h1 class="title">Happy Birthday</h1>
     <h1 class="name">Indah Nauli Damanik</h1>
     <p class="subtitle">Selamat ulang tahun ya
-    <p clas="subtittle">Makasih sudah sabar dan selalu ada di samping aku. yang penting kamu sehat dan bahagia terus. I'm so lucky to have you✨</p>
+    <p class="subtittle">Makasih sudah sabar dan selalu ada di samping aku. yang penting kamu sehat dan bahagia terus. I'm so lucky to have you✨</p>
     <button class="cake-btn" onclick="celebrate()">🎂</button>
     <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 8.5s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
 </div>
