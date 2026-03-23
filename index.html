@@ -103,7 +103,7 @@
         /* PHOTO OVERLAY */
         .photo-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center;
             z-index: 2000; opacity: 0; pointer-events: none; transition: 0.5s;
         }
 
@@ -113,9 +113,10 @@
         @keyframes cakeSliceExplode { to { transform: scale(0) rotate(720deg); opacity: 0; } }
 
         .photo-card {
-            background: white; padding: 15px 15px 25px; border-radius: 10px;
+            background: white; padding: 10px; border-radius: 15px;
             text-align: center; width: 90%; max-width: 380px;
             transform: scale(0.7); transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
         }
         #trigger-gallery:checked ~ .photo-overlay .photo-card { transform: scale(1); }
 
@@ -125,30 +126,41 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             gap: 0;
-            border-radius: 8px;
+            border-radius: 10px;
             -webkit-overflow-scrolling: touch;
         }
         .photo-gallery::-webkit-scrollbar { display: none; }
-        .photo-gallery img {
+
+        .slide {
             flex: 0 0 100%;
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
             scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 400px; /* Tinggi foto */
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
         }
 
         .photo-caption { 
             font-family: 'Dancing Script', cursive; 
             color: #333; 
             font-size: 1.2rem; 
-            margin: 15px 0;
-            min-height: 60px; /* Biar tinggi teks stabil */
+            padding: 15px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
         }
         
         .close-photo { 
-            padding: 8px 25px; background: #ff6b9d; color: white; 
-            border-radius: 20px; cursor: pointer; display: inline-block;
-            margin-top: 10px;
+            padding: 10px 30px; background: #ff6b9d; color: white; 
+            border-radius: 25px; cursor: pointer; display: inline-block;
+            margin: 10px 0 15px; font-weight: 600;
         }
 
         .music-btn {
@@ -184,44 +196,34 @@
                 <div class="cake-slice cake-slice-2">🎂</div>
                 <div class="cake-slice cake-slice-3">🎂</div>
             </label>
-            <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk kejutan! 🎉</p>
+            <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards; margin-top: 15px;">Klik 🎂 untuk kejutan! 🎉</p>
         </div>
     </div>
 
-   <div class="photo-overlay">
-    <div class="photo-card">
-        <div class="photo-overlay">
-    <div class="photo-card">
-        
-        <div class="photo-gallery">
-            
-            <div class="slide">
-                <img src="IMG_3423 2.JPG">
-                <div class="photo-caption">Semangatmu luar biasa untuk menggapai cita-cita tinggi, semoga semua usahamu terkabul, amiin.</div>
+    <div class="photo-overlay">
+        <div class="photo-card">
+            <div class="photo-gallery">
+                
+                <div class="slide">
+                    <img src="IMG_3423 2.JPG">
+                    <div class="photo-caption">Semangatmu luar biasa untuk menggapai cita-cita tinggi, semoga semua usahamu terkabul, amiin.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="IMG_1551 2.jpg">
+                    <div class="photo-caption">Semoga bisa berpetualang bersama selalu di masa depan! ✈️</div>
+                </div>
+
+                <div class="slide">
+                    <img src="IMG_2672 2.jpg">
+                    <div class="photo-caption">Bahagia terus ya Indah, I'm so lucky to have you. ✨</div>
+                </div>
+
             </div>
 
-            <div class="slide">
-                <img src="IMG_1551 2.jpg">
-                <div class="Photo caption">Semoga bisa berpetualang bersama selalu di masa depan! ✈️</div>
-            </div>
-
-            <div class="slide">
-                <img src="IMG_2672 2.jpg">
-                <div class="Photo caption">Bahagia terus ya Indah, I'm so lucky to have you. ✨</div>
-            </div>
-
+            <p style="font-size: 0.7rem; color: #888; margin-top: 5px;">(Geser untuk foto & pesan lainnya ✨)</p>
+            <label for="trigger-gallery" class="close-photo">Tutup</label>
         </div>
-
-        <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">(Geser untuk foto & pesan lainnya ✨)</p>
-        <label for="trigger-gallery" class="close-photo">Tutup</label>
-    </div>
-</div>
-
-        </div>
-
-        <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">(Geser untuk foto & pesan lainnya ✨)</p>
-        <label for="trigger-gallery" class="close-photo">Tutup</label>
-   
     </div>
 
     <audio id="bgMusic" loop>
