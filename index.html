@@ -1,162 +1,355 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Indah Nauli Damanik</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun! 🎉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- FONT IOSEVKA -->
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            position: relative;
+        }
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-body, html {
-    height: 100%;
-    font-family: 'Iosevka Web', monospace;
-    overflow: hidden;
-}
+        /* Partikel Konfeti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
 
-/* BACKGROUND FOTO */
-.bg-image {
-    /* GANTI FOTO DI SINI */
-    background-image: url('5ea4d25c-04a4-48ae-ab60-e65c001a4e59.JPG');
+        .confetti:nth-child(odd) { background: #feca57; animation-delay: 0.5s; }
+        .confetti:nth-child(3n) { background: #48dbfb; animation-delay: 1s; }
+        .confetti:nth-child(4n) { background: #ff9ff3; animation-delay: 1.5s; }
 
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: fixed;
-    width: 100%;
-    z-index: -1;
-    filter: blur(3px);
-    transform: scale(1.1);
-}
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
 
-/* OVERLAY */
-.overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-}
+        /* Container Utama */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
 
-/* CONTENT */
-.content-container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
+        /* Balon Animasi */
+        .balloon {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
 
-/* JUDUL */
-h1 {
-    font-size: clamp(36px, 6vw, 72px);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,255,255,0.5),
-        0 0 40px rgba(255,255,255,0.3);
-    margin-bottom: 20px;
-}
+        .balloon:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { right: 10%; animation-delay: 2s; }
+        .balloon:nth-child(3) { left: 20%; animation-delay: 4s; }
 
-/* TEXT */
-p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
 
-/* BUTTON KUE */
-.cake-btn {
-    font-size: 4rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    animation: pulse 1.5s infinite;
-    transition: 0.3s;
-}
+        /* Konten Utama */
+        .main-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            background: linear-gradient(45deg, #fff, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
 
-.cake-btn:hover {
-    transform: scale(1.2);
-    animation: none;
-}
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #fff) drop-shadow(0 0 30px #ffd700); }
+            to { filter: drop-shadow(0 0 30px #fff) drop-shadow(0 0 40px #ff6b6b); }
+        }
 
-/* ANIMASI */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
+        .main-content h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: white;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-/* TYPEWRITER EFFECT */
-.typing {
-    overflow: hidden;
-    border-right: 2px solid white;
-    white-space: nowrap;
-    animation: typing 3s steps(30), blink 0.7s infinite;
-}
+        /* Tombol */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+        }
 
-@keyframes blink {
-    50% { border-color: transparent }
-}
-</style>
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Kartu Ucapan */
+        .card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 2rem 0;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .card h3 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Musik Control */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .balloon {
+                font-size: 1.5rem;
+            }
+            
+            .card {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        /* Efek Sparkle */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Musik Background -->
+    <audio id="bgMusic" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSq+0/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSq+0/" type="audio/wav">
+    </audio>
 
-<div class="bg-image"></div>
-<div class="overlay"></div>
+    <!-- Kontrol Musik -->
+    <div class="music-control">
+        <button onclick="toggleMusic()" id="musicBtn" style="background: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer; color: white;">
+            🎵
+        </button>
+    </div>
 
-<div class="content-container">
-    <h1 class="typing">Happy Birthday</h1>
-<h1 class="name">Indah Nauli Damanik ❤️</h1>
+    <!-- Partikel Konfeti -->
+    <div id="confetti-container"></div>
 
-    <button class="cake-btn" onclick="celebrate()">🎂</button>
-</div>
+    <!-- Balon -->
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
+    <div class="balloon">🎈</div>
 
-<!-- MUSIK -->
-<audio id="bgMusic" loop>
-    <source src="mp3.mp3" type="audio/mpeg">
-</audio>
+    <!-- Konten Utama -->
+    <div class="container">
+        <div class="main-content">
+            <h1>🎉 SELAMAT ULANG TAHUN! 🎉</h1>
+            <h2>Semoga hari spesialmu penuh kebahagiaan!</h2>
+            <a href="#" class="btn" onclick="showMessage()">Baca Ucapan Spesial</a>
+        </div>
 
-<!-- CONFETTI -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <!-- Kartu Ucapan -->
+        <div class="card" id="messageCard" style="display: none;">
+            <h3>💝 Pesan Spesial 💝</h3>
+            <p>
+                Selamat ulang tahun untuk orang yang paling istimewa! 🎂<br><br>
+                Semoga tahun ini membawakanmu lebih banyak kebahagiaan, 
+                kesuksesan, dan mimpi yang menjadi kenyataan. 
+                Tetap menjadi versi terbaik dari dirimu sendiri! ✨<br><br>
+                <strong>Happy Birthday! 🥳🎁</strong>
+            </p>
+            <a href="#" class="btn" onclick="shareJoy()">Bagikan Kegembiraan!</a>
+        </div>
+    </div>
 
-<script>
-function celebrate() {
-    // musik
-    document.getElementById("bgMusic").play();
+    <script>
+        // Generate Konfeti
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            for(let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+                
+                // Hapus setelah animasi selesai
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
 
-    // confetti
-    confetti({
-        particleCount: 200,
-        spread: 120,
-        origin: { y: 0.6 }
-    });
+        // Buat konfeti berkala
+        setInterval(createConfetti, 3000);
+        createConfetti(); // Konfeti awal
 
-    // efek tambahan
-    setTimeout(() => {
-        confetti({
-            particleCount: 150,
-            spread: 180,
-            origin: { y: 0.3 }
+        // Musik
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicBtn.textContent = '🔇';
+            } else {
+                bgMusic.pause();
+                musicBtn.textContent = '🔊';
+            }
+        }
+
+        // Tampilkan pesan
+        function showMessage() {
+            document.getElementById('messageCard').style.display = 'block';
+            createSparkles();
+        }
+
+        // Efek Sparkle
+        function createSparkles() {
+            const mainContent = document.querySelector('.main-content');
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    mainContent.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Share
+        function shareJoy() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Selamat Ulang Tahun!',
+                    text: 'Kirim ucapan selamat ulang tahun yang spesial!',
+                    url: window.location.href
+                });
+            } else {
+                alert('Bagikan kegembiraan ini ke teman-temanmu! 🎉');
+            }
+        }
+
+        // Auto play musik setelah interaksi user
+        document.addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log('Autoplay prevented'));
+            }
+        }, { once: true });
+
+        // Tambah efek mouse trail
+        document.addEventListener('mousemove', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.width = '6px';
+            sparkle.style.height = '6px';
+            sparkle.style.background = '#ffd700';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.animation = 'sparkle 0.5s ease-out forwards';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 500);
         });
-    }, 500);
-}
-</script>
-
+    </script>
 </body>
 </html>
