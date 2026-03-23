@@ -462,12 +462,44 @@ document.addEventListener('click', function handleFirstClick() {
     document.removeEventListener('click', handleFirstClick);
 }, { once: true });
 </script>
-<div class="photo-overlay" id="photoOverlay">
-    <div class="photo-card">
-        <img src="foto_indah.jpg" alt="Indah Nauli Damanik">
-        <div class="photo-caption">You are the most beautiful person I know! ❤️</div>
-    </div>
-    <button class="close-photo" onclick="closePhoto()">Tutup</button>
-</div>
+
+
 </body>
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+
+    <input type="checkbox" id="trigger-gallery" style="display: none;">
+
+    <button class="music-btn" id="musicBtn">🎵</button>
+
+    <div class="content-container">
+        <h1 class="title">🎉Happy Birthday🎉</h1>
+        <h1 class="name">Indah Nauli Damanik</h1>
+        
+        <div class="message-container">
+            <div class="message-title">Selamat ulang tahun ya! 🎉</div>
+            <div class="message-text">
+                Makasih sudah sabar dan selalu ada di samping aku.<br>
+                Yang penting kamu sehat dan bahagia terus.<br>
+                <strong>I'm so lucky to have you ✨</strong>
+            </div>
+
+            <label for="trigger-gallery" class="cake-container">
+                <div class="cake-slice cake-slice-1">🎂</div>
+                <div class="cake-slice cake-slice-2">🎂</div>
+                <div class="cake-slice cake-slice-3">🎂</div>
+            </label>
+            <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk lihat kejutan! 🎉</p>
+        </div>
+    </div>
+
+    <div class="photo-overlay">
+        <div class="photo-card">
+            <img src="1.jpg" alt="Indah Nauli Damanik">
+            <div class="photo-caption">Happy Birthday, Indah! ❤️</div>
+            <label for="trigger-gallery" class="close-photo">Tutup</label>
+        </div>
+    </div>
+
+    </body>
 </html>
