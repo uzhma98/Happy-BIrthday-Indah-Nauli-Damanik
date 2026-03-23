@@ -1,3 +1,6 @@
+Berikut modifikasi kode untuk menampilkan **foto dan kata-kata spesial** setelah klik kue:
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -211,6 +214,111 @@ h1.title {
     }
 }
 
+/* SURPRISE MODAL - FOTO + PESAN SPESIAL */
+.surprise-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.surprise-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.surprise-photo {
+    width: clamp(280px, 70vw, 450px);
+    height: clamp(280px, 70vw, 450px);
+    border-radius: 25px;
+    object-fit: cover;
+    box-shadow: 
+        0 30px 80px rgba(255,107,157,0.6),
+        0 0 60px rgba(255,182,193,0.8),
+        inset 0 4px 20px rgba(255,255,255,0.3);
+    border: 8px solid rgba(255,255,255,0.3);
+    opacity: 0;
+    transform: scale(0.8) rotateY(-30deg);
+    animation: photoReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+}
+
+@keyframes photoReveal {
+    0% { opacity: 0; transform: scale(0.8) rotateY(-30deg); }
+    50% { opacity: 0.8; transform: scale(1.1) rotateY(10deg); }
+    100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+}
+
+.surprise-message {
+    max-width: 500px;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 2px solid rgba(255,255,255,0.2);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: messageSlideUp 1s ease 1.8s forwards;
+}
+
+.surprise-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255,107,157,0.8);
+}
+
+.surprise-text {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: white;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+@keyframes messageSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.5s 2.5s forwards;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.4);
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
 /* Floating presisi */
 @keyframes cakeFloatPrecise {
     0%, 100% { 
@@ -311,6 +419,9 @@ h1.title {
     .cake-container { width: 160px; height: 100px; }
     .cake-slice { font-size: clamp(4.5rem, 13vw, 6rem); }
     .music-btn { top: 15px; right: 15px; width: 55px; height: 55px; }
+    
+    .surprise-photo { width: 280px; height: 280px; margin-bottom: 1.5rem; }
+    .surprise-message { padding: 1.5rem; margin: 0 1rem; }
 }
 </style>
 </head>
@@ -337,131 +448,4 @@ h1.title {
             <strong>I'm so lucky to have you ✨</strong>
         </div>
         <!-- 🎂 KUE 3D PRESISI -->
-        <div class="cake-container" onclick="celebrate()">
-            <div class="cake-slice cake-slice-1">🎂</div>
-            <div class="cake-slice cake-slice-2">🎂</div>
-            <div class="cake-slice cake-slice-3">🎂</div>
-        </div>
-        <p style="font-size: 0.9rem; opacity: 0; animation: fadeInUp 1s 6.1s forwards;">Klik 🎂 untuk rayakan! 🎉</p>
-    </div>
-</div>
-
-<!-- AUDIO -->
-<audio id="bgMusic" loop preload="auto">
-    <source src="mp3.mp3">
-</audio>
-
-<!-- CONFETTI CDN -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<script>
-// 🎵 MUSIC CONTROL
-let isPlaying = false;
-const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
-
-function toggleMusic() {
-    if (isPlaying) {
-        bgMusic.pause();
-        musicBtn.innerHTML = '🔇';
-        isPlaying = false;
-    } else {
-        bgMusic.play().catch(() => {});
-        musicBtn.innerHTML = '🎵';
-        isPlaying = true;
-    }
-}
-
-// 🎉 CELEBRATE FUNCTION
-function celebrate() {
-    // Play music
-    if (!isPlaying) {
-        bgMusic.play().catch(() => {});
-        musicBtn.innerHTML = '💥';
-        isPlaying = true;
-    }
-
-    // 🎊 Confetti Explosion 1
-    confetti({
-        particleCount: 250,
-        spread: 120,
-        origin: { y: 0.6 }
-    });
-
-    // 🎊 Confetti dari kiri & kanan
-    setTimeout(() => {
-        confetti({
-            particleCount: 200,
-            angle: 60,
-            spread: 90,
-            origin: { x: 0, y: 0.4 }
-        });
-        confetti({
-            particleCount: 200,
-            angle: 120,
-            spread: 90,
-            origin: { x: 1, y: 0.4 }
-        });
-    }, 400);
-
-    // 🎊 Final burst + heart
-    setTimeout(() => {
-        confetti({
-            particleCount: 300,
-            spread: 180,
-            origin: { y: 0.2 }
-        });
-        // Heart confetti
-        setTimeout(() => {
-            for(let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    confetti({
-                        particleCount: 5,
-                        angle: 90 + i*10,
-                        spread: 20,
-                        origin: { x: 0.5, y: 0.5 },
-                        colors: ['#ff6b9d', '#ff8fab', '#ffb3c6']
-                    });
-                }, i * 200);
-            }
-        }, 200);
-    }, 1200);
-
-    // Cake slices explode presisi
-    const slices = document.querySelectorAll('.cake-slice');
-    slices.forEach((slice, index) => {
-        setTimeout(() => {
-            slice.style.animation = 'cakeSliceExplode 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        }, index * 100);
-    });
-}
-
-// Cake slice explode animation
-const explodeStyle = document.createElement('style');
-explodeStyle.textContent = `
-    @keyframes cakeSliceExplode {
-        0% { 
-            transform: scale(1) rotateY(0deg); 
-        }
-        40% { 
-            transform: scale(1.3) rotateY(180deg) rotateZ(360deg); 
-        }
-        100% { 
-            transform: scale(0) rotateY(720deg) rotateZ(1080deg) translateY(-100px); 
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(explodeStyle);
-
-// Auto play setelah user interaction
-document.addEventListener('click', function handleFirstClick() {
-    if (!isPlaying) {
-        bgMusic.play().catch(e => console.log('Audio ready'));
-    }
-    document.removeEventListener('click', handleFirstClick);
-}, { once: true });
-</script>
-
-</body>
-</html>
+        <div class="cake
