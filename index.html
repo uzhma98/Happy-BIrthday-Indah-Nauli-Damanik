@@ -6,95 +6,120 @@
     <title>Happy Birthday Indah Nauli Damanik</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Abu-abu sangat muda/bersih */
+            background-color: #f0f2f5;
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            text-align: center;
+            padding: 20px;
         }
-
         .card {
             background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 400px;
-            width: 90%;
-            transition: transform 0.3s ease;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
+        /* Style untuk Galeri Foto */
+        .photo-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #2d3436;
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Disembunyikan dulu untuk slideshow */
+            animation: fade 1.5s;
         }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
-        p {
-            font-size: 1rem;
-            color: #636e72;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
+        h1 { font-size: 1.4rem; margin-bottom: 10px; color: #2d3436; }
+        p { font-size: 0.95rem; color: #636e72; line-height: 1.6; margin-bottom: 20px; }
+        
+        .controls { display: flex; flex-direction: column; gap: 10px; }
         .btn {
-            background-color: #2d3436; /* Warna gelap minimalis */
+            background-color: #2d3436;
             color: white;
-            padding: 12px 24px;
+            padding: 12px;
             border: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            border-radius: 10px;
             cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
-
-        .btn:hover {
-            background-color: #000;
-        }
-
-        /* Animasi sederhana untuk teks */
-        .fade-in {
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .btn-music { background-color: #6c5ce7; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-    <div class="card fade-in">
-        <h1>Happy Birthday, <br> Indah Nauli Damanik</h1>
-        <p>A special day for a special person. Semoga hari ini penuh dengan kebahagiaan dan kesuksesan.</p>
+    <div class="card">
+        <div class="photo-container">
+            <img class="mySlides" src="IMG_2672 2.jpg">
+            <img class="mySlides" src="IMG_0298 2.jpg">
+            <img class="mySlides" src="IMG_1551 2.jpg">
+            <img class="mySlides" src="IMG_3366 2.JPG">
+        </div>
+
+        <h1>Happy Birthday, <br> Indah Nauli Damanik ✨</h1>
+        <p>Semoga setiap langkahmu membawa kebahagiaan dan setiap doa yang kau panjatkan segera dikabulkan. Selamat merayakan hari spesialmu!</p>
         
-        <button class="btn" onclick="celebrate()">Klik untuk Kejutan</button>
+        <div class="controls">
+            <button class="btn btn-music" onclick="toggleMusic()">🎵 Putar Musik</button>
+            <button class="btn" onclick="celebrate()">🎉 Berikan Kejutan</button>
+        </div>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
+        // Logika Slideshow
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Ganti foto setiap 3 detik
+        }
+
+        // Logika Musik
+        const music = document.getElementById("bgMusic");
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.querySelector('.btn-music').innerHTML = "⏸ Berhenti Musik";
+            } else {
+                music.pause();
+                document.querySelector('.btn-music').innerHTML = "🎵 Putar Musik";
+            }
+        }
+
+        // Logika Konfeti
         function celebrate() {
             confetti({
                 particleCount: 150,
                 spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#2d3436', '#dfe6e9', '#636e72'] // Warna minimalis
+                origin: { y: 0.6 }
             });
         }
     </script>
